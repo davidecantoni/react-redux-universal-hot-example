@@ -55,7 +55,7 @@ export default (store) => {
       <Route path="widgets" component={Widgets}/>
 
       { /* NP Routes */ }
-      <Route path="/listing" component={Listing}/>
+      <Route path="listing" component={Listing}/>
       <Route path="developer/:developerUrl" component={Developer}/>
       <Route path="developer/:developerUrl/project/:projectUrl" component={Project}/>
 

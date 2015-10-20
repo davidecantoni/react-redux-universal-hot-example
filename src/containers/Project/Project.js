@@ -6,7 +6,9 @@ import {isLoaded, load as loadProject} from 'redux/modules/project';
 @connect(
   state => ({
     project: state.project.data,
+    projectUrl: state.router.params.projectUrl,
     error: state.project.error,
+    loaded: state.project.loaded,
     loading: state.project.loading
   }),
   {...projectActions}
@@ -15,15 +17,18 @@ import {isLoaded, load as loadProject} from 'redux/modules/project';
 export default class Project extends Component {
   static propTypes = {
     history: PropTypes.object,
+    projectUrl: PropTypes.string,
     project: PropTypes.object,
     error: PropTypes.string,
+    loaded: PropTypes.bool,
     loading: PropTypes.bool,
-    load: PropTypes.func.isRequired,
+    load: PropTypes.func.isRequired
   }
 
   static fetchDataDeferred(getState, dispatch) {
+    const { router } = getState();
     if (!isLoaded(getState())) {
-      return dispatch(loadProject());
+      return dispatch(loadProject(router.params.projectUrl));
     }
   }
 
@@ -33,10 +38,11 @@ export default class Project extends Component {
   }
 
   render() {
-    const { project, loading } = this.props;
+    const { project, loaded } = this.props;
+
     return (
       <ul>
-        {!loading &&
+        {loaded &&
           <div>project detail page<br/>
             {project.id}
             {' '}

@@ -40,9 +40,10 @@ export function isLoaded(globalState) {
   return globalState.project && globalState.project.loaded;
 }
 
-export function load() {
+export function load(id = '0') {
+  console.log('fetching project with url:', id);
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.get('/project/load/param1/param2') // params not used, just shown as demonstration
+    promise: (client) => client.get('/project/load/' + id) // params not used, just shown as demonstration
   };
 }
