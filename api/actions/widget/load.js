@@ -23,6 +23,6 @@ export default function load(req) {
       } else {*/
         resolve(getWidgets(req));
       //}
-    }, 1000); // simulate async load
+    }, 3000); // simulate async load
   });
 }
