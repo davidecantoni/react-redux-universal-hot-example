@@ -4,11 +4,14 @@ import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';
 import {
     App,
     Chat,
+    Developer,
     Home,
+    Listing,
     Widgets,
     About,
     Login,
     LoginSuccess,
+    Project,
     Survey,
     NotFound,
   } from 'containers';
@@ -50,6 +53,11 @@ export default (store) => {
       <Route path="login" component={Login}/>
       <Route path="survey" component={Survey}/>
       <Route path="widgets" component={Widgets}/>
+
+      { /* NP Routes */ }
+      <Route path="/listing" component={Listing}/>
+      <Route path="developer/:developerUrl" component={Developer}/>
+      <Route path="developer/:developerUrl/project/:projectUrl" component={Project}/>
 
       { /* Catch all route */ }
       <Route path="*" component={NotFound} status={404} />
