@@ -6,6 +6,7 @@ import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
 import { InfoBar } from 'components';
 import { pushState } from 'redux-router';
+import { changeLocale } from 'redux/modules/locale';
 
 const title = 'React Redux Example';
 const description = 'All the modern best practices in one example.';
@@ -47,14 +48,19 @@ const NavbarLink = ({to, className, component, children}) => {
 };
 
 @connect(
-  state => ({user: state.auth.user}),
-  {logout, pushState})
+  state => ({
+    user: state.auth.user,
+    locale: state.locale
+  }),
+  {logout, pushState, changeLocale})
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     user: PropTypes.object,
+    locale: PropTypes.object,
     logout: PropTypes.func.isRequired,
-    pushState: PropTypes.func.isRequired
+    pushState: PropTypes.func.isRequired,
+    changeLocale: PropTypes.func.isRequired
   };
 
   static contextTypes = {
@@ -87,8 +93,13 @@ export default class App extends Component {
     this.props.logout();
   }
 
+  handleLanguage(event) {
+    event.preventDefault();
+    this.props.changeLocale('ar');
+  }
+
   render() {
-    const {user} = this.props;
+    const {user, locale} = this.props;
     const styles = require('./App.scss');
     return (
       <div className={styles.app}>
@@ -106,6 +117,7 @@ export default class App extends Component {
               <li><NavbarLink to="/survey">Survey</NavbarLink></li>
               <li><NavbarLink to="/about">About Us</NavbarLink></li>
               <li><Link to="/listing">Listing</Link></li>
+              <a href="/logout" onClick={::this.handleLanguage}>Switch language</a>
               {!user && <li><NavbarLink to="/login">Login</NavbarLink></li>}
               {user && <li className="logout-link"><a href="/logout" onClick={::this.handleLogout}>Logout</a></li>}
             </ul>
@@ -122,6 +134,7 @@ export default class App extends Component {
         <div className={styles.appContent}>
           {this.props.children}
         </div>
+        current language is {locale.current}
         <InfoBar/>
 
         <div className="well text-center">

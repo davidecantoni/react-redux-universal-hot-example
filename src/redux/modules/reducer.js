@@ -9,9 +9,11 @@ import info from './info';
 import widgets from './widgets';
 import projects from './projects';
 import project from './project';
+import locales from './locale';
 
 export default combineReducers({
   router: routerStateReducer,
+  locale: locales,
   auth,
   form,
   multireducer: multireducer({

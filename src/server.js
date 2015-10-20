@@ -20,6 +20,7 @@ import {Provider} from 'react-redux';
 import qs from 'query-string';
 import getRoutes from './routes';
 import getStatusFromRoutes from './helpers/getStatusFromRoutes';
+import {locale as localeConfig} from 'redux/modules/locale';
 
 const pretty = new PrettyError();
 const app = new Express();
@@ -59,9 +60,17 @@ app.use((req, res) => {
     // hot module replacement is enabled in the development env
     webpackIsomorphicTools.refresh();
   }
+
+  const locale = req.acceptsLanguages(localeConfig.locales) || localeConfig.locales[0];
+
   const client = new ApiClient(req);
 
-  const store = createStore(reduxReactRouter, getRoutes, createHistory, client);
+  const store = createStore(reduxReactRouter, getRoutes, createHistory, client, {
+    locale: {
+      locales: localeConfig.locales,
+      current: locale
+    }
+  });
 
   function hydrateOnClient() {
     res.send('<!doctype html>\n' +
