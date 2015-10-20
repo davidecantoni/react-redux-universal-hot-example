@@ -89,16 +89,16 @@ export function isLoaded(globalState) {
 export function load() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.get('/project/load/param1/param2') // params not used, just shown as demonstration
+    promise: (client) => client.get('/projects/load/param1/param2') // params not used, just shown as demonstration
   };
 }
 
-export function save(widget) {
+export function save(project) {
   return {
     types: [SAVE, SAVE_SUCCESS, SAVE_FAIL],
-    id: widget.id,
-    promise: (client) => client.post('/project/update', {
-      data: widget
+    id: project.id,
+    promise: (client) => client.post('/projects/update', {
+      data: project
     })
   };
 }

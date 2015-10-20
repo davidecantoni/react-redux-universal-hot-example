@@ -37,7 +37,7 @@ export default class Listing extends Component {
       <ul>
         { projects && projects.length &&
           projects.map((project) =>
-            <ProjectListing {...project}/>
+            <ProjectListing key={project.id} {...project}/>
           )
         }
       </ul>

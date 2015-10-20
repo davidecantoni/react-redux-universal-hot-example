@@ -10,8 +10,6 @@ export default class ListingItem extends Component {
   render() {
     const { developer, project } = this.props;
 
-    console.log(this.props);
-
     return (
       <li>
         <Link to={`/developer/${developer.url}/project/${project.url}`}>go to the project: {project.name}</Link><br/>

@@ -8,6 +8,7 @@ import {reducer as form} from 'redux-form';
 import info from './info';
 import widgets from './widgets';
 import projects from './projects';
+import project from './project';
 
 export default combineReducers({
   router: routerStateReducer,
@@ -20,5 +21,6 @@ export default combineReducers({
   }),
   info,
   widgets,
-  projects
+  projects,
+  project
 });
