@@ -16,8 +16,8 @@ import { ProjectListing } from 'components';
 
 export default class Listing extends Component {
   static propTypes = {
-    projects: PropTypes.array,
-    error: PropTypes.string,
+    projects: PropTypes.object,
+    error: PropTypes.object,
     loading: PropTypes.bool,
     editing: PropTypes.object.isRequired,
     load: PropTypes.func.isRequired,
@@ -35,8 +35,8 @@ export default class Listing extends Component {
 
     return (
       <ul>
-        { projects && projects.length &&
-          projects.map((project) =>
+        { projects && projects.res && projects.res.length &&
+          projects.res.map((project) =>
             <ProjectListing key={project.id} {...project}/>
           )
         }

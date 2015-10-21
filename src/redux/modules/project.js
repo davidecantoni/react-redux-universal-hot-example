@@ -44,6 +44,6 @@ export function load(id = '0') {
   console.log('fetching project with url:', id);
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.get('/project/load/' + id) // params not used, just shown as demonstration
+    promise: (client) => client.get('/api/project/load/' + id) // params not used, just shown as demonstration
   };
 }

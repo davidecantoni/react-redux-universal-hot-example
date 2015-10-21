@@ -13,9 +13,10 @@ import { WidgetForm } from 'components';
     error: state.widgets.error,
     loading: state.widgets.loading
   }),
-  {...widgetActions, initializeWithKey })
-export default
-class Widgets extends Component {
+  {...widgetActions, initializeWithKey }
+)
+
+export default class Widgets extends Component {
   static propTypes = {
     widgets: PropTypes.array,
     error: PropTypes.string,
