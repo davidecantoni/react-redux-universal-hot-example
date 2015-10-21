@@ -2,7 +2,10 @@ const initialProject = {
   id: 1,
   name: 'Project name test',
   description: 'Lorem ipsum',
-  url: 'project-name-test'
+  url: 'project-name-test',
+  meta: {
+    title: 'Project name test'
+  }
 };
 
 export function getProject(req) {

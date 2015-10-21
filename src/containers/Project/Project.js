@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as projectActions from 'redux/modules/project';
 import {isLoaded, load as loadProject} from 'redux/modules/project';
+import DocumentMeta from 'react-document-meta';
 
 @connect(
   state => ({
@@ -44,6 +45,7 @@ export default class Project extends Component {
       <ul>
         {loaded &&
           <div>project detail page<br/>
+            <DocumentMeta {...project.meta}/>
             {project.id}
             {' '}
             {project.description}
