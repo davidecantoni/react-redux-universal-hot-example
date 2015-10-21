@@ -29,6 +29,12 @@ const proxy = httpProxy.createProxyServer({
   target: 'http://localhost:' + config.apiPort,
   ws: true
 });
+const proxyMobile = httpProxy.createProxyServer({
+  target: 'https://www.propertyfinder.ae/mobileapi',
+  secure: false,
+  changeOrigin: true
+});
+//http://localhost:3000/mobileapi
 
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
@@ -42,6 +48,24 @@ app.use('/api', (req, res) => {
 
 // added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
 proxy.on('error', (error, req, res) => {
+  let json;
+  if (error.code !== 'ECONNRESET') {
+    console.error('proxy error', error);
+  }
+  if (!res.headersSent) {
+    res.writeHead(500, {'content-type': 'application/json'});
+  }
+
+  json = {error: 'proxy_error', reason: error.message};
+  res.end(JSON.stringify(json));
+});
+
+app.use('/mobileapi', (req, res) => {
+  proxyMobile.web(req, res);
+});
+
+// added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
+proxyMobile.on('error', (error, req, res) => {
   let json;
   if (error.code !== 'ECONNRESET') {
     console.error('proxy error', error);
