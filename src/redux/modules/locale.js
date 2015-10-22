@@ -1,11 +1,11 @@
 const CHANGE_LOCALE = 'CHANGE_LOCALE';
 
-export const locale = {
+export const initialState = {
   locales: ['en', 'fr', 'ar'],
   current: 'en'
 };
 
-export default function localeInfo(state = locale, action = {}) {
+export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case CHANGE_LOCALE:
       return {
@@ -16,7 +16,6 @@ export default function localeInfo(state = locale, action = {}) {
       return state;
   }
 }
-
 
 export function changeLocale(loc) {
   return { type: CHANGE_LOCALE, loc };

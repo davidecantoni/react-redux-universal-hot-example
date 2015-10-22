@@ -89,7 +89,7 @@ export function isLoaded(globalState) {
 export function load() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.get('/mobileapi')
+    promise: (client) => client.get('/mobileapi/search-map?agg=15&category=2&currency=aed&distance=1&lat=25.197486&limit=100&long=55.275049')
     //promise: (client) => client.get('/projects/load/param1/param2') // params not used, just shown as demonstration
   };
 }

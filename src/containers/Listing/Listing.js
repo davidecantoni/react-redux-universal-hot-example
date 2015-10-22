@@ -1,17 +1,19 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import * as projectActions from 'redux/modules/projects';
 import {isLoaded, load as loadProjects} from 'redux/modules/projects';
-import { ProjectListing } from 'components';
+import * as projectActions from 'redux/modules/projects';
+import * as filtersActions from 'redux/modules/filters';
+import { ProjectListing, Map } from 'components';
 
 @connect(
   state => ({
     projects: state.projects.data,
     editing: state.projects.editing,
     error: state.projects.error,
-    loading: state.projects.loading
+    loading: state.projects.loading,
+    filters: state.filters
   }),
-  {...projectActions}
+  {...projectActions, ...filtersActions}
 )
 
 export default class Listing extends Component {
@@ -21,7 +23,10 @@ export default class Listing extends Component {
     loading: PropTypes.bool,
     editing: PropTypes.object.isRequired,
     load: PropTypes.func.isRequired,
-    editStart: PropTypes.func.isRequired
+    editStart: PropTypes.func.isRequired,
+    filters: PropTypes.object,
+    changeLat: PropTypes.func.isRequired,
+    changeLng: PropTypes.func.isRequired
   }
 
   static fetchDataDeferred(getState, dispatch) {
@@ -30,9 +35,18 @@ export default class Listing extends Component {
     }
   }
 
-  render() {
-    const {projects} = this.props;
+  changeLat(event) {
+    event.preventDefault();
+    this.props.changeLat(event.target.value);
+  }
 
+  changeLng(event) {
+    event.preventDefault();
+    this.props.changeLng(event.target.value);
+  }
+
+  render() {
+    const {projects, filters} = this.props;
     return (
       <ul>
         { projects && projects.res && projects.res.length &&
@@ -40,6 +54,9 @@ export default class Listing extends Component {
             <ProjectListing key={project.id} {...project}/>
           )
         }
+        <input type="text" onChange={::this.changeLat} value={filters.lat} />
+        <input type="text" onChange={::this.changeLng} value={filters.lng} />
+        <Map {...this.props}/>
       </ul>
     );
   }

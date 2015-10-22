@@ -101,6 +101,7 @@ export default class App extends Component {
   render() {
     const {user, locale} = this.props;
     const styles = require('./App.scss');
+
     return (
       <div className={styles.app}>
         <DocumentMeta {...meta}/>

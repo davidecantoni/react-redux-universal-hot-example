@@ -20,7 +20,7 @@ import {Provider} from 'react-redux';
 import qs from 'query-string';
 import getRoutes from './routes';
 import getStatusFromRoutes from './helpers/getStatusFromRoutes';
-import {locale as localeConfig} from 'redux/modules/locale';
+import {initialState as localeConfig} from 'redux/modules/locale';
 
 const pretty = new PrettyError();
 const app = new Express();
@@ -89,12 +89,7 @@ app.use((req, res) => {
 
   const client = new ApiClient(req);
 
-  const store = createStore(reduxReactRouter, getRoutes, createHistory, client, {
-    locale: {
-      locales: localeConfig.locales,
-      current: locale
-    }
-  });
+  const store = createStore(reduxReactRouter, getRoutes, createHistory, client);
 
   function hydrateOnClient() {
     res.send('<!doctype html>\n' +
