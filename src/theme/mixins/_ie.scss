@@ -1,0 +1,13 @@
+$isIE: false !default;
+@mixin ie9() {
+    @if $isIE {
+        @if & {
+            & {
+                @content;
+            }
+        }
+        @else {
+            @content;
+        }
+    }
+}

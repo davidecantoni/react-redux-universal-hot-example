@@ -1,24 +1,170 @@
-/**
- *  Define scss variables here.
- *
- *  Available options for Bootstrap:
- *  http://getbootstrap.com/customize/
- *
- */
+// *************** Fonts *************** //
+$default-font  : 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$raleway-font  : 'Raleway', $default-font;
 
-// Custom Colors
-$cyan: #33e0ff;
-$humility: #777;
+// Font Sizes
+$smallest-size : 9px;
+$small-size    : 12px;
+$smaller-size  : 14px;
+$default-size  : 16px;
+$medium-size   : 18px;
+$large-size    : 20px;
+$larger-size   : 22px;
+$largest-size  : 24px; //only for paging left-right icons
 
-// Bootstrap Variables
-$brand-primary: darken(#428bca, 6.5%);
-$brand-secondary: #e25139;
-$brand-success: #5cb85c;
-$brand-warning: #f0ad4e;
-$brand-danger: #d9534f;
-$brand-info: #5bc0de;
+$h1-size       : 26px;
+$h2-size       : 26px;
+$h3-size       : 16px;
+$h4-size       : 15px;
 
-$text-color: #333;
+$search-sm-font-size: 17px;
 
-$font-size-base: 14px;
-$font-family-sans-serif: "Helvetica Neue", Helvetica, sans-serif;
+// *************** Screen Sizes *************** //
+$bp-1          : '(min-width: 400px)';
+$bp-2          : '(min-width: 600px)';
+$bp-3          : '(min-width: 800px)';
+$bp-4          : '(min-width: 1000px)';
+$mq-1050       : '(min-width: 1050px)';
+$mq-1100       : '(min-width: 1100px)';
+$bp-5          : '(min-width: 1200px)';
+$bp-6          : '(min-width: 1400px)';
+$bp-7          : '(min-width: 1600px)';
+$mq-380        : '(min-width: 380px)';
+$mq-430        : '(min-width: 430px)';
+$mq-460        : '(min-width: 460px)';
+$mq-480        : '(min-width: 480px)';
+$mq-490        : '(min-width: 490px)';
+$mq-550        : '(min-width: 550px)';
+$mq-640        : '(min-width: 640px)';
+$mq-680        : '(min-width: 680px)';
+$mq-850        : '(min-width: 850px)';
+$mq-900        : '(min-width: 900px)';
+$mq-980        : '(min-width: 980px)';
+$mq-1385       : '(min-width: 1385px)';
+$bp-7-ie       : '(min-width: 1601px)';
+
+$bp-320-max    : '(max-width: 319px)';
+$bp-1-max      : '(max-width: 399px)';
+$bp-2-max      : '(max-width: 599px)';
+$bp-3-max      : '(max-width: 799px)';
+$bp-4-max      : '(max-width: 999px)';
+$bp-5-max      : '(max-width: 1199px)';
+$bp-6-max      : '(max-width: 1399px)';
+$bp-7-max      : '(max-width: 1599px)';
+
+$i-6           : '(min-width: 414px)';
+$i-6-max       : '(max-width: 413px)';
+
+$small-mq      : '(min-width: 568px)';
+$medium-mq     : '(min-width: 768px)';
+$large-mq      : '(min-width: 1024px)';
+
+$mq-340-max    : '(max-width: 340px)';
+$mq-440-max    : '(max-width: 440px)';
+$mq-450-max    : '(max-width: 450px)';
+$mq-480-max    : '(max-width: 480px)';
+$mq-520-max    : '(max-width: 520px)';
+$mq-550-max    : '(max-width: 550px)';
+$small-mq-max  : '(max-width: 567px)';
+$medium-mq-max : '(max-width: 767px)';
+$mq-900-max    : '(max-width: 899px)';
+$mq-1385-max   : '(max-width: 1384px)';
+
+$big-header-mq : '(min-width: 568px) and (max-width: 899px)';
+$super-small   : '(max-width: 340px) and (min-width: 320px)';
+
+// Default width for primary content on desktop
+$default-width : 68%;
+
+// Overall margin used for paragraphs, headings etc
+$margin        : 20px;
+
+// Misc
+$border-radius : 3px;
+
+// in SERP Page
+$action-wrapper-height: 60px;
+
+// in serp-nav module
+$select-width1     : 156px;
+$select-width2     : 166px;
+$select-width1-rtl : 145px;
+$select-width2-rtl : 135px;
+
+// in slideshow nav size
+$nav-size          : 65px;
+
+// for userbox
+$ub-small    : 230px;
+$ub-normal   : 250px;
+$ub-big      : 270px;
+
+$padding     : 15px;
+$padding-top : 30px;
+
+// *************** Colors *************** //
+$default-color             : #000;
+
+$link-color                : #1080C0;
+$link-color-hover          : $link-color;
+$link-color-serp-visited   : #973566; //only will be used on serp listings
+
+$text-black                : #333;
+$light-black               : #444;
+$gray-color                : #6B6B6B;
+$light-gray-color          : #898989;
+$light-gray-border-color   : #E6E6E6;
+$lighter-gray-border-color : #EAEAEA;
+$border-gray               : #C0C0C0; //buttons border (same as 'silver')
+$select-gray               : #ACACAC;
+$placeholder-color         : #999;
+$bluish-gray               : #7F8C97;
+$userbox-gray              : #D2D2D2;
+
+$premium-color             : #D5AE39;
+$white-color               : #FFF;
+$beige-color               : #D0D6DA; //inactive search tab buttons not used anymore, test and refactor
+$orange-color              : #FAA501;
+
+$button-bg                 : $white-color;
+$button-bg-hover           : #F9F9F9;
+
+$smart-ads-actions-border  : #EFEFEF;
+
+$red-color                 : #C80529;
+$green-color               : #52A200;
+$blue-color                : #00B7DF;
+
+$mortgage-green            : #369748;
+
+$success-bg-color          : #DFF0D8;
+$success-color             : #3C763D;
+$danger-bg-color           : #F2DEDE;
+$danger-color              : #A94442;
+
+$blue-banner-color         : #598CFA;
+$blue-banner-color-gr      : #0523C4;
+$dark-blue                 : #353A50;
+
+$separator-color           : #DADADA;
+
+$shadow-color              : rgba(0, 0, 0, .4);
+
+// Backgrounds
+$white-bg                  : $white-color;
+$gray-bg                   : #FCFCFC;
+$dark-gray-bg              : #DDE2E5;
+$beige-bg                  : #F2EEE9;
+$black-bg                  : #151B1F;
+$gray-light-bg             : #FAFAFA;
+$gray-lighter-bg           : #F7F7F7;
+$search-box-bg             : #2D383F;
+$button-gray-bg            : $search-box-bg;
+$blue-bg                   : #D9EDF8; //autocomplete keywords
+$search-box-bg-gradient    : #5E6365;
+
+// Social media colors
+$google-plus-color         : #D0513E;
+$facebook-color            : #3C5A96;
+$twitter-color             : #4FA8E4;
+$linkedin-color            : #138AB2;
