@@ -8,7 +8,6 @@ import { ProjectListing, Map } from 'components';
 @connect(
   state => ({
     projects: state.projects.data,
-    editing: state.projects.editing,
     error: state.projects.error,
     loading: state.projects.loading,
     filters: state.filters
@@ -21,17 +20,16 @@ export default class Listing extends Component {
     projects: PropTypes.object,
     error: PropTypes.object,
     loading: PropTypes.bool,
-    editing: PropTypes.object.isRequired,
-    load: PropTypes.func.isRequired,
-    editStart: PropTypes.func.isRequired,
     filters: PropTypes.object,
+    isLoaded: PropTypes.func.isRequired,
+    load: PropTypes.func.isRequired,
     changeLat: PropTypes.func.isRequired,
     changeLng: PropTypes.func.isRequired
   }
 
   static fetchDataDeferred(getState, dispatch) {
     if (!isLoaded(getState())) {
-      return dispatch(loadProjects());
+      return dispatch(loadProjects(getState().filters));
     }
   }
 
@@ -48,16 +46,18 @@ export default class Listing extends Component {
   render() {
     const {projects, filters} = this.props;
     return (
-      <ul>
-        { projects && projects.res && projects.res.length &&
-          projects.res.map((project) =>
+      <div>
+      { projects && projects.res && projects.res.length &&
+        <ul>
+          {projects.res.map((project) =>
             <ProjectListing key={project.id} {...project}/>
-          )
-        }
-        <input type="text" onChange={::this.changeLat} value={filters.lat} />
-        <input type="text" onChange={::this.changeLng} value={filters.lng} />
-        <Map {...this.props}/>
-      </ul>
+          )}
+          <input type="text" onChange={::this.changeLat} value={filters.lat} />
+          <input type="text" onChange={::this.changeLng} value={filters.lng} />
+          <Map {...this.props}/>
+        </ul>
+      }
+      </div>
     );
   }
 }

@@ -86,11 +86,7 @@ export default class App extends Component {
   }
 
   render() {
-    const {user, locale} = this.props;
     const styles = require('./App.scss');
-
-    console.log(user, locale);
-
 
     return (
       <div className={styles.app}>
