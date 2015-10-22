@@ -5,32 +5,34 @@ export default class Header extends Component {
   render() {
     const styles = require('./Header.scss');
     const logo = require('./propertyfinder-logo.svg');
+    const user = require('./user.svg');
+    const menu = require('./menu.svg');
 
     return (
       <header className={styles['menu-wrapper']}>
         <nav className="pure-menu">
-          <div className="">
-            <a className={styles['menu-toggle']}>MENU</a>
-            <Link to="/" className={styles['menu-logo'] + ' pure-menu-heading'}><img src={logo} /></Link>
-            <a className={styles['menu-userbox-icon']}>USER</a>
-          </div>
+          <a className={styles['menu-toggle']}>
+            <img src={menu} />
+          </a>
+          <Link to="/" className={styles.logo + ' pure-menu-heading'}><img src={logo} /></Link>
+          <a className={styles['userbox-icon']}><img src={user} /></a>
         </nav>
 
         <nav className={styles['menu-horizontal'] + ' pure-menu pure-menu-horizontal'}>
           <li>
-            <Link to="/rent">Rent</Link>
+            <a>Rent</a>
           </li>
           <li>
-            <Link to="/rent">Buy</Link>
+            <a>Buy</a>
           </li>
           <li>
-            <Link to="/rent">Commercial</Link>
+            <a>Commercial</a>
           </li>
           <li>
-            <Link to="/rent">New Projects</Link>
+            <Link to="/newprojects">New Projects</Link>
           </li>
           <li>
-            <Link to="/rent">More</Link>
+            <a>More</a>
           </li>
         </nav>
       </header>

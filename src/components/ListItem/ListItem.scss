@@ -1,0 +1,18 @@
+@import "../../theme/variables.scss";
+@import "../../theme/mixins/utils";
+
+.list-item {
+  display: flex;
+  list-style: none;
+  margin-bottom: 10px;
+  border: 1px solid $border-gray;
+
+  .image {
+    width: 100px;
+  }
+
+  .info {
+    padding: 10px;
+    flex: 1;
+  }
+}

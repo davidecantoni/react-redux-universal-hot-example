@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {isLoaded, load as loadProjects} from 'redux/modules/projects';
 import * as projectActions from 'redux/modules/projects';
 import * as filtersActions from 'redux/modules/filters';
-import { ProjectListing, Map } from 'components';
+import { ListItem, Map } from 'components';
 
 @connect(
   state => ({
@@ -46,12 +46,13 @@ export default class Listing extends Component {
   }
 
   render() {
+    const styles = require('./Listing.scss');
     const {projects, filters} = this.props;
     return (
-      <ul>
+      <ul className={styles.listing}>
         { projects && projects.res && projects.res.length &&
           projects.res.map((project) =>
-            <ProjectListing key={project.id} {...project}/>
+            <ListItem key={project.id} {...project}/>
           )
         }
         <input type="text" onChange={::this.changeLat} value={filters.lat} />

@@ -76,6 +76,9 @@ $super-small   : '(max-width: 340px) and (min-width: 320px)';
 // Default width for primary content on desktop
 $default-width : 68%;
 
+// Default padding on containers
+$padding-container: 20px 5%;
+
 // Overall margin used for paragraphs, headings etc
 $margin        : 20px;
 

@@ -1,33 +1,46 @@
 @import "../../theme/variables.scss";
 @import "../../theme/mixins/utils";
 
-
 .menu-wrapper {
   @include clearfix();
+  height: 55px;
   white-space: nowrap;
   position: relative;
+  padding: $padding-container;
+  padding-top: 0;
+  padding-bottom: 0;
 
   a {
     display: block;
   }
 
   .menu-toggle {
-    position: absolute;
+    top: 20px;
     left: 5%;
+    position: absolute;
 
     @media #{$small-mq} {
       display: none;
     }
   }
 
-  .menu-logo {
+  .logo {
+    padding-top: 15px;
     text-align: center;
   }
 
-  .menu-userbox-icon {
+  .userbox-icon {
     position: absolute;
-    top: 0;
+    top: 13px;
+    height: 30px;
+    width: 30px;
     right: 5%;
+    text-align: center;
+    background-color: $dark-gray-bg;
+
+    img {
+      padding-top: 6px;
+    }
 
     @media #{$small-mq} {
       display: none;

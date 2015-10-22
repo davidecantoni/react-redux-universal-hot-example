@@ -12,6 +12,6 @@ export InfoBar from './InfoBar/InfoBar';
 export Map from './Map/Map';
 export Header from './Header/Header';
 export MiniInfoBar from './MiniInfoBar/MiniInfoBar';
-export ProjectListing from './ProjectListing/ProjectListing';
+export ListItem from './ListItem/ListItem';
 export SurveyForm from './SurveyForm/SurveyForm';
 export WidgetForm from './WidgetForm/WidgetForm';
