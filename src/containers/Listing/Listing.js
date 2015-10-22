@@ -8,7 +8,6 @@ import { ListItem, Map } from 'components';
 @connect(
   state => ({
     projects: state.projects.data,
-    editing: state.projects.editing,
     error: state.projects.error,
     loading: state.projects.loading,
     filters: state.filters
@@ -21,17 +20,16 @@ export default class Listing extends Component {
     projects: PropTypes.object,
     error: PropTypes.object,
     loading: PropTypes.bool,
-    editing: PropTypes.object.isRequired,
-    load: PropTypes.func.isRequired,
-    editStart: PropTypes.func.isRequired,
     filters: PropTypes.object,
+    isLoaded: PropTypes.func.isRequired,
+    load: PropTypes.func.isRequired,
     changeLat: PropTypes.func.isRequired,
     changeLng: PropTypes.func.isRequired
   }
 
   static fetchDataDeferred(getState, dispatch) {
     if (!isLoaded(getState())) {
-      return dispatch(loadProjects());
+      return dispatch(loadProjects(getState().filters));
     }
   }
 

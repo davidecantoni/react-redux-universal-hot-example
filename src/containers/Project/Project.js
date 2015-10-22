@@ -1,7 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as projectActions from 'redux/modules/project';
-import {isLoaded, load as loadProject} from 'redux/modules/project';
+//import {isLoaded, load as loadProject} from 'redux/modules/project';
+import {load as loadProject} from 'redux/modules/project';
 import DocumentMeta from 'react-document-meta';
 
 @connect(
@@ -28,9 +29,9 @@ export default class Project extends Component {
 
   static fetchDataDeferred(getState, dispatch) {
     const { router } = getState();
-    if (!isLoaded(getState())) {
-      return dispatch(loadProject(router.params.projectUrl));
-    }
+    //if (!isLoaded(getState())) {
+    return dispatch(loadProject(router.params.projectUrl));
+    //}
   }
 
   goBack() {
