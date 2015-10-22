@@ -1,40 +1,35 @@
 import React, {Component} from 'react';
-import { IndexLink, Link } from 'react-router';
+import { Link } from 'react-router';
 
-const NavbarLink = ({to, className, component, children}) => {
-  const Comp = component || Link;
-
-  return (
-    <Comp to={to} className={className} activeStyle={{
-      color: '#33e0ff'
-    }}>
-      {children}
-    </Comp>
-  );
-};
+//const NavbarLink = ({to, className, component, children}) => {
+//  const Comp = component || Link;
+//
+//  return (
+//    <Comp to={to} className={className} activeStyle={{
+//      color: '#33e0ff'
+//    }}>
+//      {children}
+//    </Comp>
+//  );
+//};
 
 export default class Header extends Component {
   render() {
-//    const {info, load} = this.props; // eslint-disable-line no-shadow
-//    const styles = require('./Header.scss');
-
+    const styles = require('./Header.scss');
+    const logo = require('./propertyfinder-logo.svg');
 
     return (
-      <header>
-        <div className="pure-g">
-          <div className="pure-u-1-3">MENU</div>
-
-          <NavbarLink to="/" className="pure-u-1-3" component={IndexLink}>
-            Properyfinder
-          </NavbarLink>
-
-          <div className="pure-u-1-3">
-            <Link to="/listing">Listing</Link>
+      <header className={styles.customer_menu_wrapper}>
+        <nav className="pure-menu">
+          <div>
+            <Link to="/menu" className="menu-toggle">MENU</Link>
+            <Link to="/" className="pure-menu-heading"><img src={logo} /></Link>
+            <Link to="/user" className="menu-userbox-icon">USER</Link>
           </div>
+        </nav>
 
-          <ul className="regional">
-          </ul>
-        </div>
+        <nav className>
+        </nav>
       </header>
     );
   }

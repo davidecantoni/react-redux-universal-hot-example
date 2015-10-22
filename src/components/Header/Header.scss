@@ -1,7 +1,6 @@
-.infoBar {
-  font-variant: italics;
-}
+@import "../../theme/variables.scss";
 
-.time {
-  margin: 0 30px;
+.customer_menu_wrapper {
+  white-space: nowrap;
+  position: relative;
 }
