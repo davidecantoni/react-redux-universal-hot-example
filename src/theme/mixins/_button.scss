@@ -1,0 +1,147 @@
+@mixin button(
+    $text-color: $default-color,
+    $bg-color: $button-bg,
+    $bg-hover-color: $button-bg-hover
+){
+    color: $text-color;
+    background-color: $bg-color;
+
+    &:hover {
+        background-color: $bg-hover-color;
+        color: $text-color;
+    }
+}
+
+.pagination-button {
+    min-width: 20px;
+    text-align: center;
+    vertical-align: top;
+}
+
+@mixin filled-button(
+    $font-size: $smaller-size,
+    $text-color: $white-color,
+    $bg-color: $red-color,
+    $padding: 0 $margin/2*3,
+    $display: block
+){
+    color: $text-color;
+    background-color: $bg-color;
+    display: $display;
+    padding: $padding;
+    height: 46px;
+    line-height: 46px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05), inset 0 -2px 1px 0 rgba(0, 0, 0, 0.35);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.4);
+    border: none 0;
+    border-radius: $border-radius;
+    font-size: $font-size;
+    @include linear-gradient($bg-color, darken($bg-color, 10));
+
+    &:hover {
+        @include linear-gradient(darken($bg-color, 5), darken($bg-color, 15));
+        text-decoration: none;
+    }
+}
+
+.button {
+    display: inline-block;
+    padding: 0 $margin/2;
+    border: 1px solid $border-gray;
+    height: 29px;
+    line-height: 29px;
+    font-size: $smaller-size;
+    border-radius: $border-radius;
+    color: $default-color;
+    background-color: $button-bg;
+
+    &:hover {
+        background-color: $button-bg-hover;
+        color: $default-color;
+        text-decoration: none;
+    }
+}
+
+.button-save-property {
+    &.loading {
+        .svg-i {
+            display: none;
+        }
+
+        .i-refresh {
+            fill: $green-color;
+            display: inline-block;
+        }
+    }
+
+    &.saved {
+        .svg-i {
+            display: none;
+        }
+
+        .i-check {
+            fill: $green-color;
+            display: inline-block;
+        }
+    }
+}
+
+.button-envelope {
+    &.contacted {
+        .svg-i {
+            fill: $green-color;
+        }
+
+        &:hover {
+            background-color: $white-bg;
+            cursor: default;
+        }
+    }
+}
+
+// social media buttons
+.social-icon {
+    width: 50px;
+    height: 36px;
+    line-height: 36px;
+    display: block;
+    color: $white-color;
+    text-align: center;
+    float: left;
+
+    .svg-i {
+        fill: $white-color;
+    }
+}
+
+.social-google-plus {
+    background-color: $google-plus-color;
+
+    &:hover {
+        background-color: $google-plus-color * .90;
+    }
+}
+
+.social-facebook {
+    background-color: $facebook-color;
+
+    &:hover {
+        background-color: $facebook-color * .90
+    }
+}
+
+.social-twitter {
+    background-color: $twitter-color;
+
+    &:hover {
+        background-color: $twitter-color * .90;
+    }
+}
+
+.social-linkedin {
+    background-color: $linkedin-color;
+
+    &:hover {
+        background-color: $linkedin-color * .90;
+    }
+}

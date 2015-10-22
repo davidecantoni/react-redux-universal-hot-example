@@ -1,0 +1,112 @@
+@charset "UTF-8";
+/***
+A collection of useful `@mixins` like `@clearfix`, `@a11y-hide` etc.
+
+Check the SASS-file for all of them.
+***/
+@mixin ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+@mixin img-replace ($src, $width, $height) {
+    background: url($src) no-repeat;
+    background-size: 100% auto;
+    width: $width;
+    max-width: 100%;
+    height: $height;
+    text-indent: -1000000px;
+
+    a {
+        display: block;
+        height: 100%;
+    }
+}
+
+// Can be included in the ajax-loading:before to just get a spinner
+// (No position absolute or overlay etc)
+@mixin ajax-loading-static {
+    background: url(../../img/spinner.gif) no-repeat;
+    content: '';
+    position: static;
+    display: inline-block;
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+}
+
+// Linear Gradient
+@mixin linear-gradient ($from: #111111, $to: #333333, $what: background, $start: to bottom) {
+    @if $what == background {
+        background-color: $from;
+    }
+
+    #{$what}-image: linear-gradient($start, $from, $to); // the standard
+}
+
+// transparent border (used for images border and search form border)
+@mixin transparent-border ($width: 1px) {
+    border: $width solid $default-color;
+    border-color: rgba(40, 40, 40, .6);
+}
+
+// General mixin for html elements
+@mixin heading ($size: $h2-size) {
+    margin: 0 0 $margin/2;
+    font: bold #{$size}/1.2 $default-font;
+    font-size: $size;
+    color: $default-color;
+}
+
+@mixin clearfix {
+    zoom: 1;
+
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+        visibility: hidden;
+        height: 0;
+    }
+}
+
+@mixin country($country) {
+    @if $country == bh or
+        $country == eg or
+        $country == lb or
+        $country == ma or
+        $country == sa or
+        $country == ae or
+        $country == qa{
+
+        @if & {
+            html.country-#{$country} & {
+                @content;
+            }
+        } @else {
+            html.country-#{$country} {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin print() {
+    @media print {
+        @content;
+    }
+}
+
+@mixin html-class($class) {
+    @if & {
+        html#{$class} & {
+            @content;
+        }
+    } @else {
+        html#{$class}{
+            @content;
+        }
+    }
+}

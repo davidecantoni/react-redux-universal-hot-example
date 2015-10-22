@@ -1,6 +1,44 @@
 @import "../../theme/variables.scss";
+@import "../../theme/mixins/utils";
 
-.customer_menu_wrapper {
+
+.menu-wrapper {
+  @include clearfix();
   white-space: nowrap;
   position: relative;
+
+  a {
+    display: block;
+  }
+
+  .menu-toggle {
+    position: absolute;
+    left: 5%;
+
+    @media #{$small-mq} {
+      display: none;
+    }
+  }
+
+  .menu-logo {
+    text-align: center;
+  }
+
+  .menu-userbox-icon {
+    position: absolute;
+    top: 0;
+    right: 5%;
+
+    @media #{$small-mq} {
+      display: none;
+    }
+  }
+
+  .menu-horizontal {
+    display: none;
+
+    @media #{$small-mq} {
+      display: block;
+    }
+  }
 }

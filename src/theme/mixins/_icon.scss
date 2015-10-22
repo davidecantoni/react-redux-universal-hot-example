@@ -1,0 +1,153 @@
+@mixin _icon ($where, $margin: 7px, $size: null, $float: null) {
+    font-family: FontAwesome;
+    font-size: $size;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: none;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    @if ($float == right) {
+        float: $float;
+        @include rtl() {
+            float: left;
+        }
+    }
+
+    @if ($float == left) {
+        float: $float;
+        @include rtl() {
+            float: right;
+        }
+    }
+
+    @if ($where == before) {
+        margin-right: $margin;
+
+        @include rtl() {
+            margin-right: 0;
+            margin-left: $margin;
+        }
+    }
+    @else {
+        margin-left: $margin;
+
+        @include rtl() {
+            margin-left: 0;
+            margin-right: $margin;
+        }
+    }
+}
+
+@mixin _icon-large {
+    font-size: 1.3333333333333333em;
+    line-height: .6;
+}
+
+@mixin _icon-small {
+    font-size: 0.8em; // inherit;
+    line-height: inherit;
+}
+
+@mixin _icon-only ($where: before, $size: 24px, $color: red, $hover: blue) {
+    font-size: 0 !important;
+    text-decoration: none !important;
+    color: transparent !important;
+
+    &:#{$where} {
+        margin: 0;
+        font-size: $size;
+        line-height: 1;
+        color: $color;
+
+        &:hover {
+            color: $hover;
+        }
+    }
+
+    &:hover {
+        &:#{$where} {
+            color: $hover;
+        }
+    }
+}
+
+@mixin icon-only ($type, $where: before, $size: 24px, $color: red, $hover: blue, $large: false) {
+    @include icon($type, $where, $large, $color);
+    @include _icon-only($where, $size, $color, $hover);
+}
+
+@mixin icon-rounded ($bg, $color: false, $where: before) {
+    &:#{$where} {
+        background: $bg;
+        background: transparent\9;
+
+        display: block;
+        padding: 12px 0 0;
+        width: 35px;
+        height: 23px;
+
+        @if ($color) {
+            color: $color;
+            color: inherit\9;
+        }
+
+        border-radius: 50%;
+    }
+}
+
+@mixin icon ($type, $where: before, $large: false, $color: false, $margin: 7px, $size: null, $float: null) {
+    &:#{$where} {
+        @include _icon($where, $margin, $size, $float);
+        content: $type;
+
+        @if ($large) {
+            @include _icon-large;
+        }
+
+        @if ($color) {
+            color: $color;
+        }
+    }
+}
+
+@mixin iconAfter ($type, $where: after, $large: false, $color: false, $margin: 7px, $size: null) {
+  &:#{$where} {
+    @include _icon($where, $margin, $size);
+    content: $type;
+
+    @if ($large) {
+      @include _icon-large;
+    }
+
+    @if ($color) {
+      color: $color;
+    }
+  }
+}
+
+@mixin _icon-fixed ($where: before, $size: 16, $offset: 0, $top: 50%) {
+    position: relative;
+
+    &:#{$where} {
+        $mt: ($size / 2);
+
+        position: absolute;
+        top: $top;
+
+        @if ($top == 50%) {
+            margin-top: -#{$mt}px;
+        }
+
+        line-height: 1;
+
+        @if ($where == before) {
+            left: $offset;
+        }
+        @else {
+            right: $offset;
+        }
+    }
+}

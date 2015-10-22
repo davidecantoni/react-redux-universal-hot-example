@@ -1,0 +1,104 @@
+// triangle for inside and element
+@mixin triangle-inside ($direction, $position, $size, $arrow-color, $arrow-border-color, $align: 50%) {
+    $invPosition: right;
+    $horizOrVertic: top;
+
+    @if ($direction == left) {
+        $invPosition: right;
+        $horizOrVertic: top;
+    }
+    @elseif ($direction == up) {
+        $invPosition: bottom;
+        $horizOrVertic: left;
+    }
+    @elseif ($direction == right) {
+        $invPosition: left;
+        $horizOrVertic: top;
+    }
+    @elseif ($direction == down) {
+        $invPosition: top;
+        $horizOrVertic: left;
+    }
+
+    &:after, &:before {
+        #{$invPosition}: 100%;
+        #{$position}: 0;
+        margin-#{$invPosition}: -1px;
+        border: solid transparent;
+        position: absolute;
+        pointer-events: none;
+        content: '';
+        width: 0;
+        height: 0;
+        z-index: 150;
+        opacity: 0;
+    }
+
+    &:before {
+        border-color: rgba(194, 225, 245, 0);
+        border-#{$invPosition}-color: $arrow-border-color;
+        border-width: $size + 2px;
+        #{$horizOrVertic}: $align;
+        margin-#{$horizOrVertic}: -($size + 2px);
+    }
+
+    &:after {
+        border-color: rgba(136, 183, 213, 0);
+        border-#{$invPosition}-color: $arrow-color;
+        border-width: $size;
+        #{$horizOrVertic}: $align;
+        margin-#{$horizOrVertic}: -$size;
+    }
+}
+
+// triangle for outside of element
+@mixin triangle-outside ($direction, $size, $arrow-color, $arrow-border-color, $align: 50%) {
+    $invPosition: right;
+    $horizOrVertic: top;
+
+    @if ($direction == left) {
+        $invPosition: right;
+        $horizOrVertic: top;
+    }
+    @elseif ($direction == up) {
+        $invPosition: bottom;
+        $horizOrVertic: left;
+    }
+    @elseif ($direction == right) {
+        $invPosition: left;
+        $horizOrVertic: top;
+    }
+    @elseif ($direction == down) {
+        $invPosition: top;
+        $horizOrVertic: left;
+    }
+
+    &:after, &:before {
+        #{$invPosition}: 100%;
+        margin-#{$invPosition}: -1px;
+        border: solid transparent;
+        position: absolute;
+        pointer-events: none;
+        content: '';
+        width: 0;
+        height: 0;
+        z-index: 150;
+        opacity: 0;
+    }
+
+    &:before {
+        border-color: rgba(194, 225, 245, 0);
+        border-#{$invPosition}-color: $arrow-border-color;
+        border-width: $size + 2px;
+        #{$horizOrVertic}: $align;
+        margin-#{$horizOrVertic}: -($size + 2px);
+    }
+
+    &:after {
+        border-color: rgba(136, 183, 213, 0);
+        border-#{$invPosition}-color: $arrow-color;
+        border-width: $size;
+        #{$horizOrVertic}: $align;
+        margin-#{$horizOrVertic}: -$size;
+    }
+}

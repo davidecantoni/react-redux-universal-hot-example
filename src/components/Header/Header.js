@@ -1,34 +1,37 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
 
-//const NavbarLink = ({to, className, component, children}) => {
-//  const Comp = component || Link;
-//
-//  return (
-//    <Comp to={to} className={className} activeStyle={{
-//      color: '#33e0ff'
-//    }}>
-//      {children}
-//    </Comp>
-//  );
-//};
-
 export default class Header extends Component {
   render() {
     const styles = require('./Header.scss');
     const logo = require('./propertyfinder-logo.svg');
 
     return (
-      <header className={styles.customer_menu_wrapper}>
+      <header className={styles['menu-wrapper']}>
         <nav className="pure-menu">
-          <div>
-            <Link to="/menu" className="menu-toggle">MENU</Link>
-            <Link to="/" className="pure-menu-heading"><img src={logo} /></Link>
-            <Link to="/user" className="menu-userbox-icon">USER</Link>
+          <div className="">
+            <a className={styles['menu-toggle']}>MENU</a>
+            <Link to="/" className={styles['menu-logo'] + ' pure-menu-heading'}><img src={logo} /></Link>
+            <a className={styles['menu-userbox-icon']}>USER</a>
           </div>
         </nav>
 
-        <nav className>
+        <nav className={styles['menu-horizontal'] + ' pure-menu pure-menu-horizontal'}>
+          <li>
+            <Link to="/rent">Rent</Link>
+          </li>
+          <li>
+            <Link to="/rent">Buy</Link>
+          </li>
+          <li>
+            <Link to="/rent">Commercial</Link>
+          </li>
+          <li>
+            <Link to="/rent">New Projects</Link>
+          </li>
+          <li>
+            <Link to="/rent">More</Link>
+          </li>
         </nav>
       </header>
     );
