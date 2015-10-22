@@ -132,8 +132,6 @@
     "eslint-plugin-import": "^0.8.0",
     "eslint-plugin-react": "^3.5.0",
     "extract-text-webpack-plugin": "^0.8.2",
-    "font-awesome": "^4.4.0",
-    "font-awesome-webpack": "0.0.4",
     "json-loader": "^0.5.3",
     "karma": "^0.13.10",
     "karma-chrome-launcher": "^0.2.0",
