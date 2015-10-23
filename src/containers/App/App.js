@@ -63,7 +63,7 @@ export default class App extends Component {
     const styles = require('./App.scss');
     return (
       <div className={styles.app}>
-        <DocumentMeta {...meta}/>
+        <DocumentMeta {...config.app.meta}/>
 
         <Header />
 

@@ -37,7 +37,6 @@ export default class Listing extends Component {
   render() {
     const styles = require('./Listing.scss');
     const {projects, loading} = this.props;
-
     return (
       <div className={styles.listing}>
         <Map {...this.props}/>

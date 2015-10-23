@@ -40,15 +40,17 @@ export default class Map extends Component {
       defaultCenter={{lat: filters.lat, lng: filters.lng}}
       onDragend={::this.dragend}
       onZoomChanged={::this.zoomChanged}>
-        {projects.res.map((marker, index) => {
-          const ref = `marker_${index}`;
-          return (
-            <Marker key={ref}
-              ref={ref}
-              title={marker.title}
-              position={{lat: marker.lat, lng: marker.long}} />
-          );
-        })}
+        {projects && projects.res && projects.res.length > 0 &&
+          projects.res.map((marker, index) => {
+            const ref = `marker_${index}`;
+            return (
+              <Marker key={ref}
+                ref={ref}
+                title={marker.title}
+                position={{lat: marker.lat, lng: marker.long}} />
+            );
+          })
+        }
       </GoogleMap>
     );
   }
