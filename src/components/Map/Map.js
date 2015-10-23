@@ -5,14 +5,21 @@ export default class Map extends Component {
   static propTypes = {
     filters: PropTypes.object,
     projects: PropTypes.object,
+    load: PropTypes.func.isRequired,
+    changeZoom: PropTypes.func.isRequired,
     changeLat: PropTypes.func.isRequired,
     changeLng: PropTypes.func.isRequired
   }
 
-  changed() {
-    console.log(this.refs.map.getZoom());
+  dragend() {
     this.props.changeLat(this.refs.map.getCenter().lat());
     this.props.changeLng(this.refs.map.getCenter().lng());
+    this.props.load(this.props.filters);
+  }
+
+  zoomChanged() {
+    this.props.changeZoom(this.refs.map.getZoom());
+    this.props.load(this.props.filters);
   }
 
   render() {
@@ -21,14 +28,18 @@ export default class Map extends Component {
       <GoogleMap containerProps={{
         ...this.props,
         style: {
-          height: '500px',
-          width: '500px'
+          height: '100%',
+          width: '100%',
+          position: 'absolute',
+          top: '0px',
+          left: '0px'
         },
       }}
       ref="map"
-      defaultZoom={14}
+      defaultZoom={filters.zoom}
       defaultCenter={{lat: filters.lat, lng: filters.lng}}
-      onDragend={::this.changed}>
+      onDragend={::this.dragend}
+      onZoomChanged={::this.zoomChanged}>
         {projects.res.map((marker, index) => {
           const ref = `marker_${index}`;
           return (

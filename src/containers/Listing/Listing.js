@@ -23,6 +23,7 @@ export default class Listing extends Component {
     filters: PropTypes.object,
     isLoaded: PropTypes.func.isRequired,
     load: PropTypes.func.isRequired,
+    changeZoom: PropTypes.func.isRequired,
     changeLat: PropTypes.func.isRequired,
     changeLng: PropTypes.func.isRequired
   }
@@ -33,30 +34,37 @@ export default class Listing extends Component {
     }
   }
 
-  changeLat(event) {
-    event.preventDefault();
-    this.props.changeLat(event.target.value);
-  }
-
-  changeLng(event) {
-    event.preventDefault();
-    this.props.changeLng(event.target.value);
-  }
-
   render() {
     const styles = require('./Listing.scss');
-    const {projects, filters} = this.props;
+    const {projects, loading} = this.props;
+
     return (
-      <ul className={styles.listing}>
-        { projects && projects.res && projects.res.length &&
-          projects.res.map((project) =>
-            <ListItem key={project.id} {...project}/>
-          )
-        }
-        <input type="text" onChange={::this.changeLat} value={filters.lat} />
-        <input type="text" onChange={::this.changeLng} value={filters.lng} />
+      <div className={styles.listing}>
         <Map {...this.props}/>
-      </ul>
+        <div className={styles.results}>
+          { projects && projects.res && projects.res.length > 0 &&
+            <ul>
+              results {projects.res.length}
+              {projects.res.map((project) =>
+                <ListItem key={project.id} {...project}/>
+              )}
+            </ul>
+          }
+          { projects && projects.res && projects.res.length <= 0 &&
+          <ul>
+            zero properties found in the selected and filtered area
+          </ul>
+          }
+        </div>
+        { loading &&
+          <div className={styles['sk-double-bounce-wrapper']}>
+            <div className={styles['sk-double-bounce']}>
+              <div className={styles['sk-child'] + ' ' + styles['sk-double-bounce1']}></div>
+              <div className={styles['sk-child'] + ' ' + styles['sk-double-bounce2']}></div>
+            </div>
+          </div>
+        }
+      </div>
     );
   }
 }

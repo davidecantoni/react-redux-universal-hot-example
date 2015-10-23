@@ -41,6 +41,6 @@ export function isLoaded(globalState) {
 export function load(filters) {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.get(`/mobileapi/search-map?agg=15&category=2&currency=aed&distance=1&lat=${filters.lat}&limit=100&long=${filters.lng}`)
+    promise: (client) => client.get(`/mobileapi/search-map?agg=${filters.zoom}&currency=aed&distance=1&lat=${filters.lat}&limit=50&long=${filters.lng}`)
   };
 }

@@ -4,4 +4,64 @@
   padding: $padding-container;
   padding-top: 0;
   margin-top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.results {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 400px;
+  margin: 0;
+  padding: 10px;
+  background-color: white;
+  height: 90%;
+  overflow-y: scroll;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+
+$spinkit-spinner-margin: 40px auto !default;
+$spinkit-size: 40px !default;
+$spinkit-spinner-color: #333 !default;
+
+.sk-double-bounce-wrapper {
+  position: absolute;
+  height: 90%;
+  width: 400px;
+  right: 0;
+  top: 0;
+}
+
+.sk-double-bounce {
+  width: $spinkit-size;
+  height: $spinkit-size;
+  position: relative;
+  margin: $spinkit-spinner-margin;
+
+  .sk-child {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: $spinkit-spinner-color;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: sk-doubleBounce 2.0s infinite ease-in-out;
+  }
+
+  .sk-double-bounce2 {
+    animation-delay: -1.0s;
+  }
+}
+
+@keyframes sk-doubleBounce {
+  0%, 100% { transform: scale(0) }
+  50% { transform: scale(1.0) }
 }

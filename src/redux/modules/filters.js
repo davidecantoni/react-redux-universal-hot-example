@@ -1,9 +1,11 @@
 const CHANGE_LAT = 'CHANGE_LAT';
 const CHANGE_LNG = 'CHANGE_LNG';
+const CHANGE_ZOOM = 'CHANGE_ZOOM';
 
 const initialState = {
   lat: 25.191971447062446,
-  lng: 55.27445929124927
+  lng: 55.27445929124927,
+  zoom: 17
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -18,6 +20,11 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         lng: action.lng
       };
+    case CHANGE_ZOOM:
+      return {
+        ...state,
+        zoom: action.zoom
+      };
     default:
       return state;
   }
@@ -29,4 +36,8 @@ export function changeLat(lat) {
 
 export function changeLng(lng) {
   return { type: CHANGE_LNG, lng };
+}
+
+export function changeZoom(zoom) {
+  return { type: CHANGE_ZOOM, zoom };
 }
