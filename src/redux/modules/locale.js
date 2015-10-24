@@ -1,4 +1,4 @@
-const CHANGE_LOCALE = 'CHANGE_LOCALE';
+const CHANGE_LOCALE = 'newprojects/locale/CHANGE_LOCALE';
 
 export const initialState = {
   locales: ['en', 'fr', 'ar'],

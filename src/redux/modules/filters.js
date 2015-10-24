@@ -1,6 +1,6 @@
-const CHANGE_LAT = 'CHANGE_LAT';
-const CHANGE_LNG = 'CHANGE_LNG';
-const CHANGE_ZOOM = 'CHANGE_ZOOM';
+const CHANGE_LAT = 'newprojects/filters/CHANGE_LAT';
+const CHANGE_LNG = 'newprojects/filters/CHANGE_LNG';
+const CHANGE_ZOOM = 'newprojects/filters/CHANGE_ZOOM';
 
 const initialState = {
   lat: 25.191971447062446,
