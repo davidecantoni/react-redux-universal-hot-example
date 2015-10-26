@@ -14,7 +14,8 @@ import { ListItem, Map, SearchField } from 'components';
     filters: state.filters,
     map: state.map
   }),
-  {...projectActions,
+  {
+    ...projectActions,
     ...filtersActions,
     ...mapActions
   }
@@ -38,10 +39,13 @@ export default class Listing extends Component {
   }
 
   static fetchDataDeferred(getState, dispatch) {
-    console.log(getState().router.params);
+    // developer url is given
+    if (getState().router.params && getState().router.params.developerUrl) {
+      console.log(getState().router.params);
+    }
 
     if (!isLoaded(getState())) {
-      return dispatch(loadProjects(getState().filters));
+      return dispatch(loadProjects(getState().map));
     }
   }
 

@@ -2,7 +2,6 @@ import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import * as projectActions from 'redux/modules/project';
-//import {isLoaded, load as loadProject} from 'redux/modules/project';
 import {load as loadProject} from 'redux/modules/project';
 import DocumentMeta from 'react-document-meta';
 
@@ -37,17 +36,19 @@ export default class Project extends Component {
 
   render() {
     const { loaded, loading } = this.props;
-    const project = this.props.project.res[0];
+    let project = this.props.project.res[0] || {};
 
-    const meta = {
-      title: project.title
+    //http://localhost:3000/mobileapi/search?id=3500901
+    project = {
+      ...project,
+      meta: project.title
     };
 
     return (
       <div>
         {!loading && loaded &&
           <div>
-            <DocumentMeta {...meta}/>
+            <DocumentMeta {...project.meta}/>
 
             <div className="image-intro">
               <img src={project.thumbnail_big} />
