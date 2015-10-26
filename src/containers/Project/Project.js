@@ -36,7 +36,11 @@ export default class Project extends Component {
 
   render() {
     const { loaded, loading } = this.props;
-    let project = this.props.project.res[0] || {};
+
+    let project = {};
+    if (this.props.project && this.props.project.res && this.props.project.res[0]) {
+      project = this.props.project.res[0];
+    }
 
     //http://localhost:3000/mobileapi/search?id=3500901
     project = {
