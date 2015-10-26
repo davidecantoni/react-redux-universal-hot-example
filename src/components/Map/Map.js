@@ -1,45 +1,64 @@
 import React, {Component, PropTypes} from 'react';
-import {GoogleMap, Marker} from 'react-google-maps';
+import {GoogleMap, Marker, /*InfoWindow*/} from 'react-google-maps';
 
 export default class Map extends Component {
   static propTypes = {
-    filters: PropTypes.object,
+    map: PropTypes.object,
     projects: PropTypes.object,
-    load: PropTypes.func.isRequired,
-    changeZoom: PropTypes.func.isRequired,
-    changeLat: PropTypes.func.isRequired,
-    changeLng: PropTypes.func.isRequired
+    updateMap: PropTypes.func.isRequired,
+    onUpdateMap: PropTypes.func.isRequired
   }
 
-  dragend() {
-    this.props.changeLat(this.refs.map.getCenter().lat());
-    this.props.changeLng(this.refs.map.getCenter().lng());
-    this.props.load(this.props.filters);
+  //TODO: this logic should be handled on the api
+  agg(km) {
+    const sizes = [5000, 1250, 156, 39.1, 4.89, 1.22, 0.153, 0.038, 0.004];
+
+    let level = 0;
+    let base = 1000;
+    sizes.map((item, index) => {
+      const temp2 = km / item - 8;
+      if (Math.abs(temp2) < base) {
+        base = Math.abs(temp2);
+        level = index + 1;
+      }
+    });
+    return level;
   }
 
-  zoomChanged() {
-    this.props.changeZoom(this.refs.map.getZoom());
-    this.props.load(this.props.filters);
+  calculate() {
+    const bounds = this.refs.map.getBounds();
+    const distance = google.maps.geometry.spherical.computeDistanceBetween(bounds.getNorthEast(), bounds.getSouthWest());
+
+    this.props.updateMap({
+      lat: this.refs.map.getCenter().lat(),
+      lng: this.refs.map.getCenter().lng(),
+      zoom: this.refs.map.getZoom(),
+      distance: distance / 2000,
+      agg: this.agg(distance / 1000)
+    });
+
+    // trigger parent action
+    this.props.onUpdateMap();
   }
 
   render() {
-    const {filters, projects} = this.props;
+    const {map, projects} = this.props;
     return (
       <GoogleMap containerProps={{
         ...this.props,
         style: {
           height: '100%',
-          width: '100%',
+          width: 'calc(100% - 420px)',
           position: 'absolute',
           top: '0px',
           left: '0px'
         },
       }}
       ref="map"
-      defaultZoom={filters.zoom}
-      defaultCenter={{lat: filters.lat, lng: filters.lng}}
-      onDragend={::this.dragend}
-      onZoomChanged={::this.zoomChanged}>
+      defaultZoom={map.zoom}
+      defaultCenter={{lat: map.lat, lng: map.lng}}
+      onDragend={::this.calculate}
+      onZoomChanged={::this.calculate}>
         {projects && projects.res && projects.res.length > 0 &&
           projects.res.map((marker, index) => {
             const ref = `marker_${index}`;
@@ -47,6 +66,20 @@ export default class Map extends Component {
               <Marker key={ref}
                 ref={ref}
                 title={marker.title}
+                icon="https://www.propertyfinder.ae/img/icons/google-maps-pin.png"
+                position={{lat: marker.lat, lng: marker.long}} />
+            );
+          })
+        }
+        {projects && projects.clusters && projects.clusters.length > 0 &&
+          projects.clusters.map((marker, index) => {
+            const ref = `marker_cluster_${index}`;
+            return (
+              <Marker key={ref}
+                ref={ref}
+                title={marker.title}
+                label={marker.count.toString()}
+                icon="https://www.propertyfinder.ae/img/icons/google-maps-pin-sa.png"
                 position={{lat: marker.lat, lng: marker.long}} />
             );
           })

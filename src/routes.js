@@ -1,10 +1,9 @@
 import React from 'react';
-import {IndexRoute, Route} from 'react-router';
+import { IndexRoute, Route} from 'react-router';
 import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';
 import {
     App,
     Chat,
-    Developer,
     Home,
     Listing,
     Widgets,
@@ -56,8 +55,10 @@ export default (store) => {
 
       { /* NP Routes */ }
       <Route path="listing" component={Listing}/>
-      <Route path="developer/:developerUrl" component={Developer}/>
-      <Route path="developer/:developerUrl/project/:projectUrl" component={Project}/>
+      <Route path="%D9%82%D8%A7%D8%A6%D9%85%D8%A9" component={Listing}/>
+      <Route path=":developerUrl" component={Listing}/>
+      <Route path=":developerUrl/:projectUrl" component={Project}/>
+
 
       { /* Catch all route */ }
       <Route path="*" component={NotFound} status={404} />

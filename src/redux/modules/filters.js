@@ -1,43 +1,32 @@
-const CHANGE_LAT = 'newprojects/filters/CHANGE_LAT';
-const CHANGE_LNG = 'newprojects/filters/CHANGE_LNG';
-const CHANGE_ZOOM = 'newprojects/filters/CHANGE_ZOOM';
+const CHANGE_DEVELOPER = 'newprojects/filters/CHANGE_DEVELOPER';
+const CHANGE_PROJECT = 'newprojects/filters/CHANGE_PROJECT';
 
 const initialState = {
-  lat: 25.191971447062446,
-  lng: 55.27445929124927,
-  zoom: 17
+  developer: '',
+  project: ''
 };
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case CHANGE_LAT:
+    case CHANGE_DEVELOPER:
       return {
         ...state,
-        lat: action.lat
+        developer: action.developer
       };
-    case CHANGE_LNG:
+    case CHANGE_PROJECT:
       return {
         ...state,
-        lng: action.lng
-      };
-    case CHANGE_ZOOM:
-      return {
-        ...state,
-        zoom: action.zoom
+        project: action.project
       };
     default:
       return state;
   }
 }
 
-export function changeLat(lat) {
-  return { type: CHANGE_LAT, lat };
+export function changeDeveloper(developer) {
+  return { type: CHANGE_DEVELOPER, developer };
 }
 
-export function changeLng(lng) {
-  return { type: CHANGE_LNG, lng };
-}
-
-export function changeZoom(zoom) {
-  return { type: CHANGE_ZOOM, zoom };
+export function changeProject(project) {
+  return { type: CHANGE_PROJECT, project };
 }

@@ -1,4 +1,4 @@
-const LOAD = 'newprojects//project/LOAD';
+const LOAD = 'newprojects/project/LOAD';
 const LOAD_SUCCESS = 'newprojects/project/LOAD_SUCCESS';
 const LOAD_FAIL = 'newprojects/project/LOAD_FAIL';
 
@@ -44,6 +44,7 @@ export function load(id = '0') {
   console.log('fetching project with url:', id);
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.get('/api/project/load/' + id) // params not used, just shown as demonstration
+    promise: (client) => client.get(`/mobileapi/search?id=${id}`)
+    //promise: (client) => client.get('/api/project/load/' + id) // params not used, just shown as demonstration
   };
 }

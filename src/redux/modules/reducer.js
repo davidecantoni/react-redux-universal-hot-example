@@ -11,6 +11,7 @@ import projects from './projects';
 import project from './project';
 import locale from './locale';
 import filters from './filters';
+import map from './map';
 
 export default combineReducers({
   router: routerStateReducer,
@@ -26,5 +27,6 @@ export default combineReducers({
   widgets,
   projects,
   project,
-  filters
+  filters,
+  map
 });

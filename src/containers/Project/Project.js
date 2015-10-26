@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import * as projectActions from 'redux/modules/project';
 //import {isLoaded, load as loadProject} from 'redux/modules/project';
@@ -34,28 +35,28 @@ export default class Project extends Component {
     //}
   }
 
-  goBack() {
-    const { history } = this.props;
-    history.goBack();
-  }
-
   render() {
-    const { project, loaded } = this.props;
+    const { loaded, loading } = this.props;
+    const project = this.props.project.res[0];
+
+    const meta = {
+      title: project.title
+    };
 
     return (
       <div>
-        {loaded &&
+        {!loading && loaded &&
           <div>
-            <DocumentMeta {...project.meta}/>
+            <DocumentMeta {...meta}/>
 
             <div className="image-intro">
-              Image
+              <img src={project.thumbnail_big} />
             </div>
 
             <div className="intro">
               <div className="info">
-                <h1>{project.description} {project.id}</h1>
-                <h2>TAGLINE</h2>
+                <h1>{project.title} {project.id}</h1>
+                <h2>TAGLINE {project.type}</h2>
 
                 <div>
                   RERA
@@ -106,8 +107,11 @@ export default class Project extends Component {
               ABOUT DEVELOPER
             </div>
 
-
+            <Link to={`/listing`}>Back to map</Link>
           </div>
+        }
+        {loading &&
+          <div>data is been fetched</div>
         }
       </div>
     );

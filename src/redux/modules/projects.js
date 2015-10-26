@@ -39,8 +39,9 @@ export function isLoaded(globalState) {
 }
 
 export function load(filters) {
+  //console.log(`/mobileapi/search-map?agg=${filters.agg}&currency=aed&distance=${filters.distance}&lat=${filters.lat}&limit=100&long=${filters.lng}`);
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.get(`/mobileapi/search-map?agg=${filters.zoom}&currency=aed&distance=1&lat=${filters.lat}&limit=50&long=${filters.lng}`)
+    promise: (client) => client.get(`/mobileapi/search-map?category=2&agg=${filters.agg}&currency=aed&distance=${filters.distance}&lat=${filters.lat}&limit=100&long=${filters.lng}`)
   };
 }

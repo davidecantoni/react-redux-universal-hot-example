@@ -3,32 +3,43 @@ import {connect} from 'react-redux';
 import {isLoaded, load as loadProjects} from 'redux/modules/projects';
 import * as projectActions from 'redux/modules/projects';
 import * as filtersActions from 'redux/modules/filters';
-import { ListItem, Map } from 'components';
+import * as mapActions from 'redux/modules/map';
+import { ListItem, Map, SearchField } from 'components';
 
 @connect(
   state => ({
     projects: state.projects.data,
     error: state.projects.error,
     loading: state.projects.loading,
-    filters: state.filters
+    filters: state.filters,
+    map: state.map
   }),
-  {...projectActions, ...filtersActions}
+  {...projectActions,
+    ...filtersActions,
+    ...mapActions
+  }
 )
 
 export default class Listing extends Component {
   static propTypes = {
+    route: PropTypes.object,
     projects: PropTypes.object,
     error: PropTypes.object,
     loading: PropTypes.bool,
     filters: PropTypes.object,
+    map: PropTypes.object,
     isLoaded: PropTypes.func.isRequired,
     load: PropTypes.func.isRequired,
-    changeZoom: PropTypes.func.isRequired,
-    changeLat: PropTypes.func.isRequired,
-    changeLng: PropTypes.func.isRequired
+    updateMap: PropTypes.func.isRequired
+  }
+
+  refetchProjects() {
+    this.props.load(this.props.map);
   }
 
   static fetchDataDeferred(getState, dispatch) {
+    console.log(getState().router.params);
+
     if (!isLoaded(getState())) {
       return dispatch(loadProjects(getState().filters));
     }
@@ -37,10 +48,12 @@ export default class Listing extends Component {
   render() {
     const styles = require('./Listing.scss');
     const {projects, loading} = this.props;
+
     return (
       <div className={styles.listing}>
-        <Map {...this.props}/>
+        <Map {...this.props} onUpdateMap={::this.refetchProjects}/>
         <div className={styles.results}>
+          <SearchField {...this.props} onSelect={::this.refetchProjects}/>
           { projects && projects.res && projects.res.length > 0 &&
             <ul>
               results {projects.res.length}

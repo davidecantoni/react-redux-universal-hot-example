@@ -11,7 +11,7 @@ import ApiClient from './helpers/ApiClient';
 import Html from './helpers/Html';
 import PrettyError from 'pretty-error';
 import http from 'http';
-import SocketIo from 'socket.io';
+//import SocketIo from 'socket.io';
 
 import {ReduxRouter} from 'redux-router';
 import createHistory from 'history/lib/createMemoryHistory';
@@ -25,27 +25,11 @@ import {initialState as localeConfig} from 'redux/modules/locale';
 const pretty = new PrettyError();
 const app = new Express();
 const server = new http.Server(app);
+
 const proxy = httpProxy.createProxyServer({
   target: 'http://localhost:' + config.apiPort,
   ws: true
 });
-const proxyMobile = httpProxy.createProxyServer({
-  target: 'https://www.propertyfinder.ae/mobileapi',
-  secure: false,
-  changeOrigin: true
-});
-//http://localhost:3000/mobileapi
-
-app.use(compression());
-app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
-
-app.use(require('serve-static')(path.join(__dirname, '..', 'static')));
-
-// Proxy to API server
-app.use('/api', (req, res) => {
-  proxy.web(req, res);
-});
-
 // added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
 proxy.on('error', (error, req, res) => {
   let json;
@@ -60,10 +44,12 @@ proxy.on('error', (error, req, res) => {
   res.end(JSON.stringify(json));
 });
 
-app.use('/mobileapi', (req, res) => {
-  proxyMobile.web(req, res);
+const proxyMobile = httpProxy.createProxyServer({
+  target: 'https://www.propertyfinder.ae/mobileapi',
+  secure: false,
+  changeOrigin: true
 });
-
+//http://localhost:3000/mobileapi
 // added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
 proxyMobile.on('error', (error, req, res) => {
   let json;
@@ -78,6 +64,19 @@ proxyMobile.on('error', (error, req, res) => {
   res.end(JSON.stringify(json));
 });
 
+app.use(compression());
+app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
+
+app.use(require('serve-static')(path.join(__dirname, '..', 'static')));
+
+// Proxy to API server
+app.use('/api', (req, res) => {
+  proxy.web(req, res);
+});
+app.use('/mobileapi', (req, res) => {
+  proxyMobile.web(req, res);
+});
+
 app.use((req, res) => {
   if (__DEVELOPMENT__) {
     // Do not cache webpack stats: the script file would change since
@@ -85,10 +84,11 @@ app.use((req, res) => {
     webpackIsomorphicTools.refresh();
   }
 
+  // set the initial language state, default en
   const locale = req.acceptsLanguages(localeConfig.locales) || localeConfig.locales[0];
+  localeConfig.current = locale;
 
   const client = new ApiClient(req);
-
   const store = createStore(reduxReactRouter, getRoutes, createHistory, client);
 
   function hydrateOnClient() {
@@ -141,10 +141,10 @@ app.use((req, res) => {
 });
 
 if (config.port) {
-  if (config.isProduction) {
+  /*if (config.isProduction) {
     const io = new SocketIo(server);
     io.path('/api/ws');
-  }
+  }*/
 
   server.listen(config.port, (err) => {
     if (err) {

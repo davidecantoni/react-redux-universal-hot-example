@@ -13,5 +13,6 @@ export Map from './Map/Map';
 export Header from './Header/Header';
 export MiniInfoBar from './MiniInfoBar/MiniInfoBar';
 export ListItem from './ListItem/ListItem';
+export SearchField from './SearchField/SearchField';
 export SurveyForm from './SurveyForm/SurveyForm';
 export WidgetForm from './WidgetForm/WidgetForm';
