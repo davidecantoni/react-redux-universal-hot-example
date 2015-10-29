@@ -13,14 +13,14 @@ import PrettyError from 'pretty-error';
 import http from 'http';
 //import SocketIo from 'socket.io';
 
-import {ReduxRouter} from 'redux-router';
+import { ReduxRouter } from 'redux-router';
 import createHistory from 'history/lib/createMemoryHistory';
-import {reduxReactRouter, match} from 'redux-router/server';
-import {Provider} from 'react-redux';
+import { reduxReactRouter, match } from 'redux-router/server';
+import { Provider } from 'react-redux';
 import qs from 'query-string';
 import getRoutes from './routes';
 import getStatusFromRoutes from './helpers/getStatusFromRoutes';
-import {initialState as localeConfig} from 'redux/modules/locale';
+import { initialState as localeConfig } from 'redux/modules/locale';
 
 const pretty = new PrettyError();
 const app = new Express();
@@ -73,11 +73,18 @@ app.use(require('serve-static')(path.join(__dirname, '..', 'static')));
 app.use('/api', (req, res) => {
   proxy.web(req, res);
 });
+
+app.use('/somewhereelse', (req, res) => {
+  res.send('<!doctype html>\n' +
+    'Welcome outside of np <a href="/en/new-project/">back to new project</a>');
+});
+
 app.use('/mobileapi', (req, res) => {
   proxyMobile.web(req, res);
 });
 
-app.use((req, res) => {
+// TODO: sysadmin check that lang is [en|fr|ar] according to the country setting
+app.use('/:lang/new-project', (req, res) => {
   if (__DEVELOPMENT__) {
     // Do not cache webpack stats: the script file would change since
     // hot module replacement is enabled in the development env
@@ -85,8 +92,9 @@ app.use((req, res) => {
   }
 
   // set the initial language state, default en
-  const locale = req.acceptsLanguages(localeConfig.locales) || localeConfig.locales[0];
-  localeConfig.current = locale;
+  /*const locale = req.acceptsLanguages(localeConfig.locales) || localeConfig.locales[0];
+  localeConfig.current = locale;*/
+  localeConfig.current = req.params.lang;
 
   const client = new ApiClient(req);
   const store = createStore(reduxReactRouter, getRoutes, createHistory, client);

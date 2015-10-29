@@ -9,6 +9,7 @@ export CounterButton from './CounterButton/CounterButton';
 export GithubButton from './GithubButton/GithubButton';
 export Footer from './Footer/Footer';
 export InfoBar from './InfoBar/InfoBar';
+export LanguageSwitch from './LanguageSwitch/LanguageSwitch';
 export Map from './Map/Map';
 export Header from './Header/Header';
 export MiniInfoBar from './MiniInfoBar/MiniInfoBar';

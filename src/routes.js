@@ -1,22 +1,15 @@
 import React from 'react';
 import { IndexRoute, Route} from 'react-router';
-import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';
+//import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';
 import {
     App,
-    Chat,
-    Home,
-    Listing,
-    Widgets,
-    About,
-    Login,
-    LoginSuccess,
+    MapListing,
     Project,
-    Survey,
     NotFound,
   } from 'containers';
 
-export default (store) => {
-  const requireLogin = (nextState, replaceState, cb) => {
+export default () => {
+  /*const requireLogin = (nextState, replaceState, cb) => {
     function checkAuth() {
       const { auth: { user }} = store.getState();
       if (!user) {
@@ -31,37 +24,35 @@ export default (store) => {
     } else {
       checkAuth();
     }
-  };
+  };*/
 
   /**
    * Please keep routes in alphabetical order
    */
   return (
-    <Route path="/" component={App}>
+    <Route path="/:lang/:newproject/" component={App}>
       { /* Home (main) route */ }
-      <IndexRoute component={Home}/>
+      <IndexRoute component={MapListing}/>
 
-      { /* Routes requiring login */ }
+      { /* Routes requiring login
       <Route onEnter={requireLogin}>
         <Route path="chat" component={Chat}/>
         <Route path="loginSuccess" component={LoginSuccess}/>
       </Route>
 
-      { /* Routes */ }
+      { Routes }
       <Route path="about" component={About}/>
       <Route path="login" component={Login}/>
       <Route path="survey" component={Survey}/>
-      <Route path="widgets" component={Widgets}/>
+      <Route path="widgets" component={Widgets}/>*/ }
 
       { /* NP Routes */ }
-      <Route path="listing" component={Listing}/>
-      <Route path="%D9%82%D8%A7%D8%A6%D9%85%D8%A9" component={Listing}/>
-      <Route path=":developerUrl" component={Listing}/>
-      <Route path=":developerUrl/:projectUrl" component={Project}/>
-
+      <Route path="/:lang/:newproject/listing" component={MapListing}/>
+      <Route path="/:lang/:newproject/%D9%82%D8%A7%D8%A6%D9%85%D8%A9" component={MapListing}/>
+      <Route path="/:lang/:newproject/:developerUrl/:projectUrl" component={Project}/>
 
       { /* Catch all route */ }
-      <Route path="*" component={NotFound} status={404} />
+      <Route path="/:lang/:newproject/*" component={NotFound} status={404} />
     </Route>
   );
 };

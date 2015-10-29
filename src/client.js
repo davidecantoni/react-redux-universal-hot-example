@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import createHistory from 'history/lib/createBrowserHistory';
 import createStore from './redux/create';
 import ApiClient from './helpers/ApiClient';
-import io from 'socket.io-client';
+//import io from 'socket.io-client';
 import {Provider} from 'react-redux';
 import {reduxReactRouter, ReduxRouter} from 'redux-router';
 
@@ -19,7 +19,7 @@ const client = new ApiClient();
 const dest = document.getElementById('content');
 const store = createStore(reduxReactRouter, makeRouteHooksSafe(getRoutes), createHistory, client, window.__data);
 
-function initSocket() {
+/*function initSocket() {
   const socket = io('', {path: '/api/ws', transports: ['polling']});
   socket.on('news', (data) => {
     console.log(data);
@@ -30,9 +30,9 @@ function initSocket() {
   });
 
   return socket;
-}
+}*/
 
-global.socket = initSocket();
+//global.socket = initSocket();
 
 const component = (
   <ReduxRouter routes={getRoutes(store)} />

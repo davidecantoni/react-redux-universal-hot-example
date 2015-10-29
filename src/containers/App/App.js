@@ -49,7 +49,7 @@ export default class App extends Component {
     return Promise.all(promises);
   }
 
-  handleLogout(event) {
+  /*handleLogout(event) {
     event.preventDefault();
     this.props.logout();
   }
@@ -57,7 +57,7 @@ export default class App extends Component {
   handleLanguage(event) {
     event.preventDefault();
     this.props.changeLocale('ar');
-  }
+  }*/
 
   render() {
     const styles = require('./App.scss');

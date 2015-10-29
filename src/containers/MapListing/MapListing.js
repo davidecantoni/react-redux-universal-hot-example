@@ -1,10 +1,11 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {isLoaded, load as loadProjects} from 'redux/modules/projects';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { isLoaded, load as loadProjects } from 'redux/modules/projects';
 import * as projectActions from 'redux/modules/projects';
 import * as filtersActions from 'redux/modules/filters';
 import * as mapActions from 'redux/modules/map';
-import { ListItem, Map, SearchField } from 'components';
+import { ListItem, Map, SearchField, LanguageSwitch } from 'components';
+
 
 @connect(
   state => ({
@@ -23,12 +24,16 @@ import { ListItem, Map, SearchField } from 'components';
 
 export default class Listing extends Component {
   static propTypes = {
-    route: PropTypes.object,
     projects: PropTypes.object,
+    /*todos: PropTypes.arrayOf(PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      completed: PropTypes.bool.isRequired
+    }).isRequired).isRequired*/
     error: PropTypes.object,
     loading: PropTypes.bool,
     filters: PropTypes.object,
     map: PropTypes.object,
+    params: PropTypes.object,
     isLoaded: PropTypes.func.isRequired,
     load: PropTypes.func.isRequired,
     updateMap: PropTypes.func.isRequired
@@ -50,9 +55,8 @@ export default class Listing extends Component {
   }
 
   render() {
-    const styles = require('./Listing.scss');
-    const {projects, loading} = this.props;
-
+    const styles = require('./MapListing.scss');
+    const { projects, loading, params } = this.props;
     return (
       <div className={styles.listing}>
         <Map {...this.props} onUpdateMap={::this.refetchProjects}/>
@@ -61,8 +65,8 @@ export default class Listing extends Component {
           { projects && projects.res && projects.res.length > 0 &&
             <ul>
               results {projects.res.length}
-              {projects.res.map((project) =>
-                <ListItem key={project.id} {...project}/>
+              {projects.res.map((item) =>
+                <ListItem key={item.id} project={item} params={params}/>
               )}
             </ul>
           }
@@ -71,6 +75,8 @@ export default class Listing extends Component {
             zero properties found in the selected and filtered area
           </ul>
           }
+          <LanguageSwitch params={params}/>
+
         </div>
         { loading &&
           <div className={styles['sk-double-bounce-wrapper']}>
