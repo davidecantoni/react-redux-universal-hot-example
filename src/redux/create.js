@@ -3,7 +3,19 @@ import createMiddleware from './middleware/clientMiddleware';
 import transitionMiddleware from './middleware/transitionMiddleware';
 
 export default function createStore(reduxReactRouter, getRoutes, createHistory, client, data) {
+  /*const logger = store => next => action => {
+    console.group(action.type);
+    console.info('dispatching', action);
+    const result = next(action);
+    console.log('next state', store.getState());
+    console.groupEnd(action.type);
+    return result;
+  };*/
+
   const middleware = [createMiddleware(client), transitionMiddleware];
+  /*if (__CLIENT__) {
+    middleware = [logger, createMiddleware(client), transitionMiddleware];
+  }*/
 
   let finalCreateStore;
   if (__DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__) {

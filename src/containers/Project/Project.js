@@ -1,72 +1,76 @@
 import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
+import { createSelector } from 'reselect';
 import * as projectActions from 'redux/modules/project';
-import {load as loadProject} from 'redux/modules/project';
+import {load as loadProject, isLoaded} from 'redux/modules/project';
 import DocumentMeta from 'react-document-meta';
 
+const projectSelector = createSelector(
+  state => state.project,
+  state => state.router.params.projectUrl,
+  (project, projectUrl) => {
+    const data = {
+      project,
+      projectUrl,
+      activeProject: {}
+    };
+    if (projectUrl && project[projectUrl]) {
+      data.activeProject = project[projectUrl];
+    }
+
+    return data;
+  }
+);
+
 @connect(
-  state => ({
-    project: state.project.data,
-    projectUrl: state.router.params.projectUrl,
-    error: state.project.error,
-    loaded: state.project.loaded,
-    loading: state.project.loading
-  }),
+  projectSelector,
   {...projectActions}
 )
 
 export default class Project extends Component {
   static propTypes = {
-    history: PropTypes.object,
+    //history: PropTypes.object,
+    //router: PropTypes.object,
     projectUrl: PropTypes.string,
     project: PropTypes.object,
-    error: PropTypes.string,
-    loaded: PropTypes.bool,
-    loading: PropTypes.bool,
+    params: PropTypes.object,
+    activeProject: PropTypes.object,
+    //error: PropTypes.string,
+    //loaded: PropTypes.bool,
+    //loading: PropTypes.bool,
     load: PropTypes.func.isRequired
   }
 
   static fetchDataDeferred(getState, dispatch) {
     const { router } = getState();
-    //if (!isLoaded(getState())) {
-    return dispatch(loadProject(router.params.projectUrl));
-    //}
+    const id = router.params.projectUrl;
+    if (!isLoaded(getState(), id)) {
+      return dispatch(loadProject(id));
+    }
   }
 
   render() {
-    const { loaded, loading } = this.props;
-
-    let project = {};
-    if (this.props.project && this.props.project.res && this.props.project.res[0]) {
-      project = this.props.project.res[0];
-    }
-
-    //http://localhost:3000/mobileapi/search?id=3500901
-    project = {
-      ...project,
-      meta: project.title
-    };
-
+    const { activeProject, params } = this.props;
     return (
       <div>
-        {!loading && loaded &&
+        {!activeProject.loading && activeProject.loaded &&
           <div>
-            <DocumentMeta {...project.meta}/>
+            <DocumentMeta {...activeProject.data.meta}/>
 
             <div className="image-intro">
-              <img src={project.thumbnail_big} />
+              <img src={activeProject.data.image} />
             </div>
 
             <div className="intro">
               <div className="info">
-                <h1>{project.title} {project.id}</h1>
-                <h2>TAGLINE {project.type}</h2>
+                <h1>{activeProject.data.title}</h1>
+                <h2>TAGLINE</h2>
 
                 <div>
                   RERA
                 </div>
-
+                {activeProject.data.description}
                 <ul>
                   <li>PARAMS</li>
                 </ul>
@@ -112,10 +116,12 @@ export default class Project extends Component {
               ABOUT DEVELOPER
             </div>
 
-            <Link to={`/listing`}>Back to map</Link>
+            <Link to={`/${params.lang}/${params.newproject}/`}>Back to map</Link><br/>
+            <a href="/somewhereelse">Some other place outside of new project</a><br/>
+            <Link to={`/${params.lang}/${params.newproject}/asdwerwer`}>link to a non existing page</Link><br/>
           </div>
         }
-        {loading &&
+        {activeProject.loading &&
           <div>data is been fetched</div>
         }
       </div>

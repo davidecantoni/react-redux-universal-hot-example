@@ -36,13 +36,16 @@
     }
   },
   "globals": {
-    "google": true,
     "__DEVELOPMENT__": true,
     "__CLIENT__": true,
     "__SERVER__": true,
     "__DISABLE_SSR__": true,
     "__DEVTOOLS__": true,
     "socket": true,
-    "webpackIsomorphicTools": true
+    "webpackIsomorphicTools": true,
+
+    "$": true,
+    "Bloodhound": true,
+    "google": true
   }
 }
