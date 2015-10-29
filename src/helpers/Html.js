@@ -42,6 +42,8 @@ export default class Html extends Component {
           <div id="content" dangerouslySetInnerHTML={{__html: content}}/>
           <script dangerouslySetInnerHTML={{__html: `window.__data=${serialize(store.getState())};`}} charSet="UTF-8"/>
           <script src="//maps.googleapis.com/maps/api/js?libraries=geometry"></script>
+          <script src="https://twitter.github.io/typeahead.js/js/jquery-1.10.2.min.js"></script>
+          <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
           <script src={assets.javascript.main} charSet="UTF-8"/>
         </body>
       </html>
