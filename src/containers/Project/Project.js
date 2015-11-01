@@ -43,10 +43,8 @@ export default class Project extends Component {
   }
 
   static fetchDataDeferred(getState, dispatch) {
-    const { router } = getState();
-    const id = router.params.projectUrl;
-    if (!isLoaded(getState(), id)) {
-      return dispatch(loadProject(id));
+    if (!isLoaded(getState())) {
+      return dispatch(loadProject(getState()));
     }
   }
 
@@ -116,9 +114,9 @@ export default class Project extends Component {
               ABOUT DEVELOPER
             </div>
 
-            <Link to={`/${params.lang}/${params.newproject}/`}>Back to map</Link><br/>
+            <Link to={`/${params.lang}/${params.newprojects}/`}>Back to map</Link><br/>
             <a href="/somewhereelse">Some other place outside of new project</a><br/>
-            <Link to={`/${params.lang}/${params.newproject}/asdwerwer`}>link to a non existing page</Link><br/>
+            <Link to={`/${params.lang}/${params.newprojects}/asdwerwer`}>link to a non existing page</Link><br/>
           </div>
         }
         {activeProject.loading &&

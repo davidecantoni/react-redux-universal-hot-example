@@ -42,16 +42,23 @@ export default function reducer(state = initialState, action = {}) {
   }
 }
 
-export function isLoaded(globalState, id) {
+export function isLoaded(globalState) {
+  const id = globalState.router.params.projectUrl;
   return globalState.project[id] && globalState.project[id].loaded;
 }
 
-export function load(id) {
+export function load(globalState) {
+  const params = globalState.router.params;
+  const id = params.projectUrl;
+  const lang = params.lang;
   console.log('fetching project with url:', id);
+  console.log('fetching project with lang:', lang);
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     id,
     //promise: (client) => client.get(`/mobileapi/search?id=${id}`)
+    // TODO add language param
+    //promise: (client) => client.get('/' + lang + '/en/api/project/load/' + id)
     promise: (client) => client.get('/api/project/load/' + id) // params not used, just shown as demonstration
   };
 }

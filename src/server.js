@@ -76,7 +76,7 @@ app.use('/api', (req, res) => {
 
 app.use('/somewhereelse', (req, res) => {
   res.send('<!doctype html>\n' +
-    'Welcome outside of np <a href="/en/new-project/">back to new project</a>');
+    'Welcome outside of np <a href="/en/new-projects/">back to new project</a>');
 });
 
 app.use('/mobileapi', (req, res) => {
@@ -84,7 +84,7 @@ app.use('/mobileapi', (req, res) => {
 });
 
 // TODO: sysadmin check that lang is [en|fr|ar] according to the country setting
-app.use('/:lang/new-project', (req, res) => {
+app.use('/:lang/new-projects', (req, res) => {
   if (__DEVELOPMENT__) {
     // Do not cache webpack stats: the script file would change since
     // hot module replacement is enabled in the development env

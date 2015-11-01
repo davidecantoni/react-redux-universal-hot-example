@@ -13,12 +13,12 @@ export default class ListItem extends Component {
     return (
       <li className={styles['list-item']}>
         <div className={styles.image}>
-          <Link to={`/${params.lang}/${params.newproject}/developer-name/${project.id}`}>
+          <Link to={`/${params.lang}/${params.newprojects}/developer-name/${project.id}`}>
             <img className="pure-img" src={project.thumbnail} alt={project.title} />
           </Link>
         </div>
         <div className={styles.info}>
-          <Link to={`/${params.lang}/${params.newproject}/developer-name/${project.id}`}>{project.title}</Link>
+          <Link to={`/${params.lang}/${params.newprojects}/developer-name/${project.id}`}>{project.title}</Link>
           <div>{project.price}</div>
           <div>{project.location}</div>
         </div>

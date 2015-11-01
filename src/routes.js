@@ -30,7 +30,7 @@ export default () => {
    * Please keep routes in alphabetical order
    */
   return (
-    <Route path="/:lang/:newproject/" component={App}>
+    <Route path="/:lang/:newprojects/" component={App}>
       { /* Home (main) route */ }
       <IndexRoute component={MapListing}/>
 
@@ -47,12 +47,12 @@ export default () => {
       <Route path="widgets" component={Widgets}/>*/ }
 
       { /* NP Routes */ }
-      <Route path="/:lang/:newproject/listing" component={MapListing}/>
-      <Route path="/:lang/:newproject/%D9%82%D8%A7%D8%A6%D9%85%D8%A9" component={MapListing}/>
-      <Route path="/:lang/:newproject/:developerUrl/:projectUrl" component={Project}/>
+      <Route path="/:lang/:newprojects/listing" component={MapListing}/>
+      <Route path="/:lang/:newprojects/%D9%82%D8%A7%D8%A6%D9%85%D8%A9" component={MapListing}/>
+      <Route path="/:lang/:newprojects/:developerUrl/:projectUrl" component={Project}/>
 
       { /* Catch all route */ }
-      <Route path="/:lang/:newproject/*" component={NotFound} status={404} />
+      <Route path="/:lang/:newprojects/*" component={NotFound} status={404} />
     </Route>
   );
 };

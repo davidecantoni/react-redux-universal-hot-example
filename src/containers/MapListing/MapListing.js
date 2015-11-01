@@ -40,17 +40,12 @@ export default class Listing extends Component {
   }
 
   refetchProjects() {
-    this.props.load(this.props.map);
+    this.props.load(this.props);
   }
 
   static fetchDataDeferred(getState, dispatch) {
-    // developer url is given
-    if (getState().router.params && getState().router.params.developerUrl) {
-      console.log(getState().router.params);
-    }
-
     if (!isLoaded(getState())) {
-      return dispatch(loadProjects(getState().map));
+      return dispatch(loadProjects(getState()));
     }
   }
 
