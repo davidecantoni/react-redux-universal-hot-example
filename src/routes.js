@@ -32,7 +32,7 @@ export default () => {
   return (
     <Route path="/:lang/:newprojects/" component={App}>
       { /* Home (main) route */ }
-      <IndexRoute component={MapListing}/>
+      <IndexRoute component={App}/>
 
       { /* Routes requiring login
       <Route onEnter={requireLogin}>

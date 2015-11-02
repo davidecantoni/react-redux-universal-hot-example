@@ -61,19 +61,19 @@ export default class App extends Component {
 
   render() {
     const styles = require('./App.scss');
+    console.log(this.props.children);
     return (
       <div className={styles.app}>
-        <DocumentMeta {...config.app.meta}/>
+        <DocumentMeta {...config.app.meta} />
 
         <Header />
 
-        <div className={styles.appContent}>
-          {this.props.children}
-        </div>
-
         <Footer />
-
       </div>
     );
   }
+  // This was duplicating everything for some reason
+  // <div className={styles.appContent}>
+  //   {this.props.children}
+  // </div>
 }
