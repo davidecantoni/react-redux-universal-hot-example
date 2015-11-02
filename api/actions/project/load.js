@@ -1,9 +1,42 @@
 const initialProject = {
   id: 1,
-  name: 'Project name test',
-  description: 'Penatibus placerat urna sed placerat et habitasse a pid elementum ut facilisis adipiscing lorem et, cras, pid penatibus pid enim, aliquet cum montes? Ultrices, porttitor mus ac, tempor ut sit, ac nunc mattis tristique mus nunc dis magna, magna augue eu, phasellus, non amet? Risus eu augue mauris vel, adipiscing rhoncus duis velit ultrices sagittis egestas. Dignissim integer arcu sit ut nisi, duis nec, aliquam sociis, vel augue! Urna tortor? Nec phasellus! Montes sit! Proin magna elementum duis natoque magna et, penatibus rhoncus tristique, magnis ac! Nec ac sagittis nec! Rhoncus tincidunt rhoncus nunc ac? Hac! Ut scelerisque? Lectus porta urna eu placerat placerat a non lundium montes in eros tempor augue placerat turpis vel, ac odio parturient, lacus magna.',
+  name: 'AZIZI LIATRIS RESIDENCE',
+  tagline: 'Our vision is to build truly elegant homes',
+  rera: '458',
+  description: '<p>With a view of the enchanting Dubai Marina skyscrapers from the Al Furjan community setting, the Azizi Liatris Residence is uniqueness personified.</p><p>Affordability coupled luxurious amenities make this an excitingly sound investment. High spec building materials and modern designs make the Azizi Liatris an elegant choice for family homes with unrivaled quality finishing. The attractive buildings are conveniently located to all the amenities a modern family may desire. Location makes this piece of the pie all the more sweet.</p>',
+  developer_name: 'Azizi Liatris',
+  developer_logo: '/azizi-logo.jpg',
+  price: '891,000',
+  price_sqft: '985',
+  price_payable: '89,100',
+  currency: 'AED',
+  status: 'Under Construction',
+  total_units: '250',
+  possession: 'Q1 2016',
+  title_type: 'Freehold',
+  location: 'Al Furjan, Dubai',
   url: 'project-name-test',
-  image: '//pfae-a.akamaihd.net/img/banner-background/background-image-1.jpg?v=22cf5485da34642bb289b1b113f2d2de',
+  image: '/main-img.jpg',
+  secondary_image: '/secondary-img.jpg',
+  key_features: [
+    'Beautiful large swimming pool',
+    'Kid&#39;s pool at the podium level',
+    'State of the art gymnasium Modern sauna',
+    'Steam room and jacuzzi',
+    'Car parking spots for each appartment'
+  ],
+  master_developer: {
+    name: 'Nakheel',
+    img: '/nakheel.jpg'
+  },
+  developer: {
+    name: 'Azizi Liatris',
+    img: '/azizi.jpg'
+  },
+  bank: {
+    name: 'ADCB',
+    img: '/adcb.jpg'
+  },
   meta: {
     title: 'Project name test'
   }

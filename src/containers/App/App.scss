@@ -1,6 +1,288 @@
-// Variables & Mixins for the project
 @import "../../theme/variables.scss";
+@import "../../theme/base.scss";
+@import "../../theme/helper-classes.scss";
+@import "../../theme/mixins/utils";
 
-.app {
-  color: $text-black;
+.main-img {
+  min-height: 325px;
+  max-height: 500px;
+}
+
+.secondary-img {
+  min-height: 225px;
+  max-height: 400px;
+}
+
+.rera {
+  display: block;
+  text-align: right;
+  width: 100%;
+  padding: $margin/4 $margin/2 0 0;
+  color: $placeholder-color;
+  font-size: $smaller-size;
+
+  @media screen and (min-width: 768px) {
+    width: calc(100% - 320px);
+    padding: 0;
+    position: absolute;
+    top: 22px;
+  }
+
+  @media screen and (min-width: 900px) {
+    top: 52px;
+  }
+}
+
+.client-logo {
+  display: block;
+  margin: 3px auto $margin/4*5;
+}
+
+.key-features {
+  display: none;
+  width: 300px;
+  clear: both;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
+}
+
+.key-features,
+.read-more {
+  .svg-i {
+    margin-right: 4px;
+  }
+}
+
+.contact-form-wrapper {
+  @media screen and (min-width: 768px) {
+    width: 300px;
+    float: right;
+    border: 1px solid $select-gray;
+    border-radius: $border-radius;
+    padding: $margin $margin $margin/2;
+    margin-top: -165px;
+    position: relative;
+    background-color: rgba(255,255,255,0.9);
+
+    .separator-line {
+      display: none;
+    }
+  }
+}
+
+.contact-form {
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
+
+  .text-input {
+    width: 100%;
+    height: 40px;
+    border-radius: $border-radius;
+    border: 1px solid $select-gray;
+    margin-bottom: $margin/2;
+    padding-left: $margin/2;
+    font-size: $smaller-size;
+  }
+
+  .action-button {
+    width: 100%;
+    margin-bottom: $margin/2;
+  }
+
+  .action-buttons {
+    margin: 0;
+  }
+}
+
+.primary-content {
+  @media screen and (min-width: 768px) {
+    width: calc(100% - 320px);
+    max-width: none;
+    margin: 0;
+  }
+
+  h2 {
+    text-transform: uppercase;
+    margin: $margin/4 0 12px;
+  }
+
+  h3 {
+    margin-top: 21px;
+  }
+}
+
+.table {
+  font-size: $small-size;
+
+  tr {
+    @media screen and (min-width: 900px) {
+      display: inline-block;
+      width: 50%;
+    }
+  }
+
+  td,
+  th {
+    width: 50%;
+    border-bottom: 1px solid $lighter-gray-border-color;
+  }
+
+  th {
+    height: 35px;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  td {
+    font-weight: 700;
+
+    @media screen and (min-width: 900px) {
+      min-width: 130px;
+      width: 40%;
+    }
+  }
+}
+
+.about,
+.key-features {
+  margin-bottom: $margin/4*5;
+
+  p,
+  .features-item {
+    text-align: justify;
+    font-size: $small-size;
+    line-height: $large-size;
+  }
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+
+  .features-item {
+    text-align: left;
+  }
+}
+
+.developer-mid-info {
+  display: none;
+  height: 110px;
+  background-color: $another-gray;
+  border-top: 1px solid $dark-gray;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
+
+  .centered-content {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.secondary-content {
+  h3 {
+    margin: $margin 0;
+  }
+
+  .facts {
+    border-top: 1px solid $lighter-gray-border-color;
+  }
+}
+
+.more-details {
+  font-size: $small-size;
+  margin: $margin 0;
+  display: inline-block;
+
+  .svg-i {
+    vertical-align: bottom !important;
+  }
+}
+
+.action-buttons {
+  margin: $margin/4*5 0;
+}
+
+.switch-button {
+  background-color: $darker-gray !important;
+  color: $white-color;
+  font-weight: 700;
+  position: relative;
+  cursor: pointer;
+  outline: 0;
+  border: 0 !important;
+  display: block !important;
+  margin: $margin auto;
+  width: 71px;
+
+  .switch-option {
+    position: relative;
+    z-index: 10;
+    transition: color 200ms ease-in-out;
+    color: $white-color;
+  }
+
+  .option-2d {
+    color: $red-color;
+    margin-right: 5px;
+  }
+
+  .option-3d {
+    margin-left: 5px;
+  }
+
+  &:after {
+    content: '';
+    width: 32px;
+    height: 25px;
+    position: absolute;
+    background-color: $white-color;
+    top: 2px;
+    right: 36px;
+    border-radius: $border-radius;
+    z-index: 5;
+    transition: right 400ms ease-in-out;
+  }
+}
+
+.house-layout {
+  display: none;
+}
+
+.layout2d {
+  display: inline;
+}
+
+.switch-checkbox {
+  display: none;
+
+  &:checked {
+    ~ .layout2d {
+      display: none;
+    }
+
+    ~ .layout3d {
+      display: inline;
+    }
+
+    ~ .switch-button {
+      &:after {
+        right: 3px;
+      }
+
+      .option-2d {
+        color: $white-color;
+      }
+
+      .option-3d {
+        color: $red-color;
+      }
+    }
+  }
 }
