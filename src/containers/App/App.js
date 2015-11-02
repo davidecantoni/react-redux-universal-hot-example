@@ -6,22 +6,18 @@ import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/module
 import { Footer, Header } from 'components';
 import { pushState } from 'redux-router';
 import config from '../../config';
-import { changeLocale } from 'redux/modules/locale';
 
 @connect(
   state => ({
-    user: state.auth.user,
-    locale: state.locale
+    user: state.auth.user
   }),
-  {logout, pushState, changeLocale})
+  {logout, pushState})
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     user: PropTypes.object,
-    locale: PropTypes.object,
     logout: PropTypes.func.isRequired,
-    pushState: PropTypes.func.isRequired,
-    changeLocale: PropTypes.func.isRequired
+    pushState: PropTypes.func.isRequired
   };
 
   static contextTypes = {

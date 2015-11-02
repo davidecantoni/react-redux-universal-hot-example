@@ -20,7 +20,6 @@ import { Provider } from 'react-redux';
 import qs from 'query-string';
 import getRoutes from './routes';
 import getStatusFromRoutes from './helpers/getStatusFromRoutes';
-import { initialState as localeConfig } from 'redux/modules/locale';
 
 const pretty = new PrettyError();
 const app = new Express();
@@ -94,7 +93,6 @@ app.use('/:lang/new-projects', (req, res) => {
   // set the initial language state, default en
   /*const locale = req.acceptsLanguages(localeConfig.locales) || localeConfig.locales[0];
   localeConfig.current = locale;*/
-  localeConfig.current = req.params.lang;
 
   const client = new ApiClient(req);
   const store = createStore(reduxReactRouter, getRoutes, createHistory, client);
