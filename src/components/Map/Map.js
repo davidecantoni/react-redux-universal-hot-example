@@ -47,11 +47,11 @@ export default class Map extends Component {
       <GoogleMap containerProps={{
         ...this.props,
         style: {
-          height: '100%',
-          width: 'calc(100% - 420px)',
+          height: 'calc(100% - 55px)',
+          width: '100%',
           position: 'absolute',
-          top: '0px',
-          left: '0px'
+          bottom: '0',
+          left: '0'
         },
       }}
       ref="map"

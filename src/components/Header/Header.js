@@ -49,8 +49,8 @@ export default class Header extends Component {
         <div className={styles.avatar + ' ' + styles['v-center']}>
           <a href="#">
             <div className={styles.user + ' ' + styles['replace-by-x']}>
-              <svg dangerouslySetInnerHTML={{__html: useUser }} className={styles['svg-i'] + ' ' + styles['i-user'] + ' ' + styles['svg-big'] + ' ' + styles['svg-white'] + ' ' + styles['all-center']} />
-              <svg dangerouslySetInnerHTML={{__html: useClose }} className={styles['svg-i'] + ' ' + styles['i-close'] + ' ' + styles['svg-blue'] + ' ' + styles['svg-huge']} />
+              <svg dangerouslySetInnerHTML={{__html: useUser}} className={styles['svg-i'] + ' ' + styles['i-user'] + ' ' + styles['svg-big'] + ' ' + styles['svg-white'] + ' ' + styles['all-center']} />
+              <svg dangerouslySetInnerHTML={{__html: useClose}} className={styles['svg-i'] + ' ' + styles['i-close'] + ' ' + styles['svg-blue'] + ' ' + styles['svg-huge']} />
             </div>
           </a>
         </div>
