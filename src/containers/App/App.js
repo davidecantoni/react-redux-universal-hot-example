@@ -59,7 +59,7 @@ export default class App extends Component {
     const styles = require('./App.scss');
     return (
       <div className={styles.app}>
-        <DocumentMeta {...config.app.meta}/>
+        <DocumentMeta {...config.app.meta} />
 
         <Header />
 
@@ -68,7 +68,6 @@ export default class App extends Component {
         </div>
 
         <Footer />
-
       </div>
     );
   }

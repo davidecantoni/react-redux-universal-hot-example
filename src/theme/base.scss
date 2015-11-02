@@ -1,0 +1,83 @@
+// critical css
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: $white-color;
+    font-family: $default-font;
+}
+
+body {
+    font: $default-size/1.6 $default-font;
+    color: $default-color;
+}
+
+h1 {
+    font-size: $h1-size;
+    color: $text-black;
+    margin: $margin 0 0;
+}
+
+h2 {
+    font-size: $h2-size;
+    color: $placeholder-color;
+    font-weight: 300;
+}
+
+h3 {
+    font-size: $h3-size;
+}
+
+h4,
+h5,
+h6 {
+    font-size: $h4-size;
+}
+
+a {
+    cursor: pointer;
+    color: $link-color;
+    text-decoration: none;
+    outline: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border-spacing: 0;
+}
+
+// critical
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+// move this somewhere else
+.v-center {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+}
+
+.h-center {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.all-center {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
