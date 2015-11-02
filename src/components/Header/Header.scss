@@ -5,171 +5,171 @@
 
 // critical css
 .header {
-    width: 100%;
-    height: $header-height;
-    position: relative;
-    border-bottom: 1px solid $separator-color;
+  width: 100%;
+  height: $header-height;
+  position: relative;
+  border-bottom: 1px solid $separator-color;
 
-    @media screen and (min-width: 568px) and (max-width: 899px) {
-        margin-bottom: $m-menu-height;
-        border-bottom: 0;
-    }
+  @media screen and (min-width: 568px) and (max-width: 899px) {
+    margin-bottom: $m-menu-height;
+    border-bottom: 0;
+  }
 }
 
 // Logo block
 .logo {
-    display: inline-block;
-    height: inherit;
+  display: inline-block;
+  height: inherit;
 
-    @media screen and (min-width: 568px) {
-        margin-left: 5%;
-    }
+  @media screen and (min-width: 568px) {
+    margin-left: 5%;
+  }
 }
 
 .logo-img {
-    width: $logo-width;
-    height: $header-height;
+  width: $logo-width;
+  height: $header-height;
 
-    @media screen and (min-width: 568px) {
-        position: static;
-    }
+  @media screen and (min-width: 568px) {
+    position: static;
+  }
 }
 
 // Hamburger SVG icon styles
 .hamburger-icon {
-    left: 5%;
-    height: 22px;
-    padding: 1px 0;
-    margin-left: -$margin/4;
+  left: 5%;
+  height: 22px;
+  padding: 1px 0;
+  margin-left: -$margin/4;
 
-    @media screen and (min-width: 568px) {
-        display: none;
-    }
+  @media screen and (min-width: 568px) {
+    display: none;
+  }
 }
 
 .hamburger-svg {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .gc {
-    fill: $link-color;
-    transition: transform .4s ease-in-out, opacity .2s ease-in-out;
+  fill: $link-color;
+  transition: transform .4s ease-in-out, opacity .2s ease-in-out;
 }
 
 .a-x {
-    .gc:nth-of-type(1) {
-        transform: rotate(-45deg) translateY(15px) translateX(-14px);
-    }
+  .gc:nth-of-type(1) {
+    transform: rotate(-45deg) translateY(15px) translateX(-14px);
+  }
 
-    .gc:nth-of-type(2) {
-        opacity: 0;
-    }
+  .gc:nth-of-type(2) {
+    opacity: 0;
+  }
 
-    .gc:nth-of-type(3) {
-        transform: rotate(45deg) translateY(-20px) translateX(0);
-    }
+  .gc:nth-of-type(3) {
+    transform: rotate(45deg) translateY(-20px) translateX(0);
+  }
 }
 
 .header-nav-wrapper {
-    background-color: $lighter-gray-border-color;
-    border-top: 1px solid $light-gray-border-color;
-    display: none;
-    padding-left: 5%;
+  background-color: $lighter-gray-border-color;
+  border-top: 1px solid $light-gray-border-color;
+  display: none;
+  padding-left: 5%;
+
+  @media screen and (min-width: 568px) {
+    display: block;
+    width: 100%;
+    height: 43px;
+    box-sizing: border-box;
+  }
+
+  @media screen and (min-width: 900px) {
+    background-color: transparent;
+    border: 0;
+    display: inline-block;
+    padding-left: 3%;
+    padding-right: 3%;
+    width: auto;
+    vertical-align: top;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .header-nav {
+    position: relative;
 
     @media screen and (min-width: 568px) {
-        display: block;
-        width: 100%;
-        height: 43px;
-        box-sizing: border-box;
+      margin-left: -12px;
+      margin-right: -12px;
     }
 
-    @media screen and (min-width: 900px) {
-        background-color: transparent;
-        border: 0;
+    > .header-menu {
+      margin: 0;
+      padding: 0;
+      font-size: 0;
+      list-style: none;
+
+      > li {
         display: inline-block;
-        padding-left: 3%;
-        padding-right: 3%;
-        width: auto;
-        vertical-align: top;
-    }
 
-    @media screen and (min-width: 1024px) {
-        padding-left: 4%;
-        padding-right: 4%;
-    }
+        > a {
+          cursor: pointer;
+          color: $text-black;
+          font-family: $default-font;
+          font-size: $smaller-size;
+          padding: 0 12px;
+          display: block;
+          height: $m-menu-height;
+          line-height: $m-menu-height;
+          text-transform: uppercase;
 
-    .header-nav {
-        position: relative;
+          @media screen and (min-width: 900px) {
+            font-size: 13px;
+            padding: 0 $margin/2;
+            height: $header-height;
+            line-height: $header-height;
+          }
 
-        @media screen and (min-width: 568px) {
-            margin-left: -12px;
-            margin-right: -12px;
+          @media screen and (min-width: 1024px) {
+            font-size: $small-size;
+          }
         }
 
-        > .header-menu {
-            margin: 0;
-            padding: 0;
-            font-size: 0;
-            list-style: none;
+        &:hover {
+          > a {
+            color: $red-color;
+            text-decoration: none;
 
-            > li {
-                display: inline-block;
-
-                > a {
-                    cursor: pointer;
-                    color: $text-black;
-                    font-family: $default-font;
-                    font-size: $smaller-size;
-                    padding: 0 12px;
-                    display: block;
-                    height: $m-menu-height;
-                    line-height: $m-menu-height;
-                    text-transform: uppercase;
-
-                    @media screen and (min-width: 900px) {
-                        font-size: 13px;
-                        padding: 0 $margin/2;
-                        height: $header-height;
-                        line-height: $header-height;
-                    }
-
-                    @media screen and (min-width: 1024px) {
-                        font-size: $small-size;
-                    }
-                }
-
-                &:hover {
-                    > a {
-                        color: $red-color;
-                        text-decoration: none;
-
-                        .svg-i {
-                            fill: $red-color;
-                        }
-                    }
-                }
-
-                &.more {
-                    font-size: $small-size;
-
-                    .svg-i {
-                        margin: -2px -2px 0;
-                        fill: $text-black;
-                    }
-                }
+            .svg-i {
+              fill: $red-color;
             }
+          }
         }
+
+        &.more {
+          font-size: $small-size;
+
+          .svg-i {
+            margin: -2px -2px 0;
+            fill: $text-black;
+          }
+        }
+      }
     }
+  }
 }
 
 // Userbox avatar
 .avatar {
-    right: 5%;
-    height: 30px;
-    width: 30px;
-    background-color: $dark-gray;
+  right: 5%;
+  height: 30px;
+  width: 30px;
+  background-color: $dark-gray;
 }
 
 .i-close {
-    display: none;
+  display: none;
 }

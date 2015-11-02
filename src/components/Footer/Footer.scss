@@ -4,118 +4,118 @@
 @import "../../theme/mixins/utils";
 
 .footer {
-    margin-bottom: 0;
-    padding: $margin 0 $margin/2*3;
-    border-top: 0;
-    background-color: $light-gray-border-color;
-    font-size: $small-size;
-    padding-top: $margin;
+  margin-bottom: 0;
+  padding: $margin 0 $margin/2*3;
+  border-top: 0;
+  background-color: $light-gray-border-color;
+  font-size: $small-size;
+  padding-top: $margin;
 
-    .link-wrap {
-        display: block;
+  .link-wrap {
+    display: block;
+  }
+
+  .footer-nav {
+    display: block;
+    text-align: center;
+    padding: $margin 0;
+  }
+
+  // Copyright
+  .site-name {
+    display: block;
+    text-align: center;
+    float: none;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  .red-color {
+    color: $red-color;
+  }
+
+  .footer-links {
+    display: inline-block;
+    margin: 0;
+    list-style: none;
+    padding: 0;
+  }
+
+  .f-lst {
+    display: inline-block;
+    white-space: nowrap;
+
+    .footer-link {
+      color: $light-black;
+      margin: 0 0 0 12px;
     }
 
-    .footer-nav {
-        display: block;
-        text-align: center;
-        padding: $margin 0;
+    &.first .footer-link {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .mobile-app-button-container {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    float: none;
+    overflow: hidden;
+
+    > .app-btn {
+      width: 134px;
+      height: 40px;
+
+      span {
+        display: none;
+        margin-right: $margin/4;
+      }
     }
 
-    // Copyright
-    .site-name {
-        display: block;
-        text-align: center;
-        float: none;
-        margin: 0;
-        font-weight: bold;
+    .apple-store {
+      float: left;
+      margin-right: 0;
+      background: url(../../../static/DownloadApps2_iOS.png) no-repeat top left transparent;
     }
 
-    .red-color {
-        color: $red-color;
+    .google-play {
+      float: right;
+      background: url(../../../static/DownloadApps2_Android.png) no-repeat top left transparent;
     }
 
-    .footer-links {
-        display: inline-block;
-        margin: 0;
-        list-style: none;
-        padding: 0;
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+    only screen and (min--moz-device-pixel-ratio: 1.5),
+    only screen and (min-device-pixel-ratio: 1.5),
+    only screen and (min-device-pixel-ratio: 2) {
+      .apple-store {
+        background: url(../../../static/DownloadApps2_iOS-retina.png) no-repeat top left transparent;
+      }
+
+      .google-play {
+        background: url(../../../static/DownloadApps2_Android-retina.png) no-repeat top left transparent;
+      }
+
+      .app-btn {
+        background-size: 134px 40px;
+      }
     }
-
-    .f-lst {
-        display: inline-block;
-        white-space: nowrap;
-
-        .footer-link {
-            color: $light-black;
-            margin: 0 0 0 12px;
-        }
-
-        &.first .footer-link {
-            padding: 0;
-            margin: 0;
-        }
-    }
-
-    .mobile-app-button-container {
-        width: 100%;
-        display: block;
-        margin: 0 auto;
-        float: none;
-        overflow: hidden;
-
-        > .app-btn {
-            width: 134px;
-            height: 40px;
-
-            span {
-                display: none;
-                margin-right: $margin/4;
-            }
-        }
-
-        .apple-store {
-            float: left;
-            margin-right: 0;
-            background: url(../../../static/DownloadApps2_iOS.png) no-repeat top left transparent;
-        }
-
-        .google-play {
-            float: right;
-            background: url(../../../static/DownloadApps2_Android.png) no-repeat top left transparent;
-        }
-
-        @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-        only screen and (min--moz-device-pixel-ratio: 1.5),
-        only screen and (min-device-pixel-ratio: 1.5),
-        only screen and (min-device-pixel-ratio: 2) {
-            .apple-store {
-                background: url(../../../static/DownloadApps2_iOS-retina.png) no-repeat top left transparent;
-            }
-
-            .google-play {
-                background: url(../../../static/DownloadApps2_Android-retina.png) no-repeat top left transparent;
-            }
-
-            .app-btn {
-                background-size: 134px 40px;
-            }
-        }
-    }
+  }
 }
 
 .iOS-only,
 .android-only {
-    .mobile-app-button-container {
-        text-align: center;
+  .mobile-app-button-container {
+    text-align: center;
 
-        .apple-store,
-        .google-play {
-            float: none;
-            margin: 0;
-        }
+    .apple-store,
+    .google-play {
+      float: none;
+      margin: 0;
     }
+  }
 }
 
 .footer-mobile {
-    padding-bottom: 95px;
+  padding-bottom: 95px;
 }

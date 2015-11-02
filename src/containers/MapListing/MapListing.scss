@@ -15,16 +15,22 @@
   width: 400px;
   margin: 0;
   padding: 10px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, .9);
   height: 90%;
   overflow-y: scroll;
+}
+
+.results-count {
+  text-align: right;
+  font-weight: 800;
+  font-size: $smaller-size;
+  margin-bottom: $margin/2;
 }
 
 ul {
   margin: 0;
   padding: 0;
 }
-
 
 $spinkit-spinner-margin: 40px auto !default;
 $spinkit-size: 40px !default;
@@ -49,19 +55,19 @@ $spinkit-spinner-color: #333 !default;
     height: 100%;
     border-radius: 50%;
     background-color: $spinkit-spinner-color;
-    opacity: 0.6;
+    opacity: .6;
     position: absolute;
     top: 0;
     left: 0;
-    animation: sk-doubleBounce 2.0s infinite ease-in-out;
+    animation: sk-doubleBounce 2s infinite ease-in-out;
   }
 
   .sk-double-bounce2 {
-    animation-delay: -1.0s;
+    animation-delay: -1s;
   }
 }
 
 @keyframes sk-doubleBounce {
   0%, 100% { transform: scale(0) }
-  50% { transform: scale(1.0) }
+  50% { transform: scale(1) }
 }

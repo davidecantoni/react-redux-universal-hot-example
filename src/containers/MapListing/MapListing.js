@@ -58,12 +58,14 @@ export default class Listing extends Component {
         <div className={styles.results}>
           <SearchField {...this.props} onSelect={::this.refetchProjects}/>
           { projects && projects.res && projects.res.length > 0 &&
-            <ul>
-              results {projects.res.length}
-              {projects.res.map((item) =>
-                <ListItem key={item.id} project={item} params={params}/>
-              )}
-            </ul>
+            <div>
+              <div className={styles['results-count']}>{projects.res.length} projects found</div>
+              <ul>
+                {projects.res.map((item) =>
+                  <ListItem key={item.id} project={item} params={params}/>
+                )}
+              </ul>
+            </div>
           }
           { projects && projects.res && projects.res.length <= 0 &&
           <ul>
@@ -71,7 +73,6 @@ export default class Listing extends Component {
           </ul>
           }
           <LanguageSwitch params={params}/>
-
         </div>
         { loading &&
           <div className={styles['sk-double-bounce-wrapper']}>

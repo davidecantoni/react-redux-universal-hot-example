@@ -1,169 +1,220 @@
 .centered-content {
+  width: 90%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.centered-content-desktop {
+  @media screen and (min-width: 768px) {
     width: 90%;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
-}
-
-.centered-content-desktop {
-    @media screen and (min-width: 768px) {
-        width: 90%;
-        max-width: 1000px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  }
 }
 
 .responsive-img {
-    width: 100%;
-    object-fit: cover;
+  width: 100%;
+  object-fit: cover;
 }
 
 .separator-line {
-    border-top: 1px solid $separator-color;
+  border-top: 1px solid $separator-color;
 }
 
 .price {
-    color: $red-color;
+  color: $red-color;
 }
 
 .button {
-    display: inline-block;
-    padding: 0 $margin/2;
-    border: 1px solid $border-gray;
-    height: 29px;
-    line-height: 29px;
-    font-size: $small-size;
-    border-radius: $border-radius;
-    color: $default-color;
-    background-color: $button-bg;
+  display: inline-block;
+  padding: 0 $margin/2;
+  border: 1px solid $border-gray;
+  height: 29px;
+  line-height: 29px;
+  font-size: $small-size;
+  border-radius: $border-radius;
+  color: $default-color;
+  background-color: $button-bg;
 
-    &:hover {
-        background-color: $button-bg-hover;
-        color: $default-color;
-        text-decoration: none;
-    }
+  &:hover {
+    background-color: $button-bg-hover;
+    color: $default-color;
+    text-decoration: none;
+  }
 }
 
 .huge-button {
-    width: 100%;
-    height: 50px;
-    background-color: $button-bg-hover;
-    font-weight: 700;
+  width: 100%;
+  height: 50px;
+  background-color: $button-bg-hover;
+  font-weight: 700;
 }
 
 .select-button {
+  color: $red-color;
+  margin-bottom: $margin/4*5;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+
+  &:hover {
     color: $red-color;
-    margin-bottom: $margin/4*5;
-
-    @media screen and (min-width: 768px) {
-        display: none;
-    }
-
-    &:hover {
-        color: $red-color;
-    }
+  }
 }
 
 .action-button {
-    width: 48%;
-    height: 50px;
-    background-color: $green-color;
-    font-weight: 700;
-    font-size: $medium-size;
-    color: $white-color;
-    border: 0;
-    border-bottom: 2px solid darken($green-color, 10);
+  width: 48%;
+  height: 50px;
+  background-color: $green-color;
+  font-weight: 700;
+  font-size: $medium-size;
+  color: $white-color;
+  border: 0;
+  border-bottom: 2px solid darken($green-color, 10);
 
-    &:hover {
-        background-color: darken($green-color, 10);
-        color: $white-color;
-    }
+  &:hover {
+    background-color: darken($green-color, 10);
+    color: $white-color;
+  }
 }
 
 // unless it's strictly defined, icons should just inherit it's parent size
 .svg-i {
-    width: inherit;
-    height: inherit;
-    vertical-align: middle;
+  width: inherit;
+  height: inherit;
+  vertical-align: middle;
 }
 
 // Icon colors
 .svg-red {
-    fill: $red-color;
+  fill: $red-color;
 }
 
 .svg-blue {
-    fill: $link-color;
+  fill: $link-color;
 }
 
 .svg-white {
-    fill: $white-color;
+  fill: $white-color;
 }
 
 .svg-gray {
-    fill: $select-gray;
+  fill: $select-gray;
 }
 
 .svg-green {
-    fill: $green-color;
+  fill: $green-color;
 }
 
 .svg-success {
-    fill: $success-color;
+  fill: $success-color;
 }
 
 // Icon sizes
 .svg-smallest {
-    width: 10px;
-    height: 10px;
+  width: 10px;
+  height: 10px;
 }
 
 .svg-smaller { // 14px
-    height: $small-size;
-    width: $small-size;
+  height: $small-size;
+  width: $small-size;
 }
 
 .svg-small {
-    width: 13px;
-    height: 13px;
+  width: 13px;
+  height: 13px;
 }
 
 .svg-15 {
-    width: 15px;
-    height: 15px;
+  width: 15px;
+  height: 15px;
 }
 
 .svg-normal { // 16px
-    width: $default-size;
-    height: $default-size;
+  width: $default-size;
+  height: $default-size;
 }
 
 .svg-medium { // 18px
-    width: $medium-size;
-    height: $medium-size;
+  width: $medium-size;
+  height: $medium-size;
 }
 
 .svg-big { // 20px
-    width: $large-size;
-    height: $large-size;
+  width: $large-size;
+  height: $large-size;
 }
 
 .svg-larger { // 22px
-    width: $larger-size;
-    height: $larger-size;
+  width: $larger-size;
+  height: $larger-size;
 }
 
 .svg-largest { // 24px
-    width: $largest-size;
-    height: $largest-size;
+  width: $largest-size;
+  height: $largest-size;
 }
 
 .svg-huge {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 .pos-relative {
-    position: relative;
+  position: relative;
+}
+
+// critical
+.icons-wrapper {
+  box-sizing: border-box;
+  height: 27px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  color: $white-color;
+  padding: 7px 9px;
+  background-color: $default-color;
+  background: rgba(0, 0, 0, .6);
+  vertical-align: top;
+  width: 100%;
+
+  .svg-i {
+    stroke: $white-color;
+  }
+}
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+// move this somewhere else
+.v-center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+
+.h-center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.all-center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }

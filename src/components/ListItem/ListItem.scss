@@ -1,4 +1,6 @@
 @import "../../theme/variables.scss";
+@import "../../theme/base.scss";
+@import "../../theme/helper-classes.scss";
 @import "../../theme/mixins/utils";
 
 .list-item {
@@ -6,13 +8,69 @@
   list-style: none;
   margin-bottom: 10px;
   border: 1px solid $border-gray;
+  background-color: $white-color;
 
   .image {
-    width: 100px;
+    height: 125px;
+    width: 140px;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      max-height: 100%;
+      max-width: none;
+    }
   }
 
   .info {
     padding: 10px;
     flex: 1;
+    font-size: $smaller-size;
+    position: relative;
   }
+}
+
+.info-link {
+  color: $link-color;
+  text-decoration: none;
+}
+
+.info-developer {
+  color: $light-gray-color;
+  margin-bottom: $margin/2;
+}
+
+.info-developer-logo {
+  position: absolute;
+  top: 5px;
+  right: $margin;
+}
+
+.info-price {
+  color: $red-color;
+  margin-bottom: $margin/2;
+  font-weight: 600;
+}
+
+.info-location {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100px; // just so it doesn't break the layout
+}
+
+.info-status {
+  color: $light-gray-color;
+}
+
+.info-button {
+  position: absolute;
+  bottom: 5px;
+  right: $margin/2;
+  width: 72px;
+  background-color: $dark-blue;
+  color: $white-color;
+  font-size: $smallest-size;
+  height: 26px;
+  line-height: 25px;
 }
