@@ -5,8 +5,8 @@ export default class Header extends Component {
   render() {
     const styles = require('./Header.scss');
     const logo = '//pfae-a.akamaihd.net/img/logos/property-finder-UAE-logo.svg';
-    const useUser = '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../../sprite.svg#i-user"></use>';
-    const useClose = '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../../sprite.svg#i-close"></use>';
+    const useUser = '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/sprite.svg#i-user"></use>';
+    const useClose = '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/sprite.svg#i-close"></use>';
 
     return (
       <header className={styles.header}>

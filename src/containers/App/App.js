@@ -56,15 +56,16 @@ export default class App extends Component {
   }*/
 
   render() {
+    const styles = require('./App.scss');
     return (
       <div>
         <DocumentMeta {...config.app.meta} />
 
         <Header />
 
-        <div>
+        <main role="main" className={styles.content}>
           {this.props.children}
-        </div>
+        </main>
 
         <Footer />
       </div>
