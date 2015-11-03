@@ -14,6 +14,15 @@
   }
 }
 
+.centered-content-mobile {
+  @media screen and (max-width: 767px) {
+    width: 90%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 .responsive-img {
   width: 100%;
   object-fit: cover;
