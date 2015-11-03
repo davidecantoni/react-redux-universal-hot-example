@@ -336,7 +336,7 @@ export default class Project extends Component {
               </button>
             </section>
 
-            <section className={styles['developer-footer']}>
+            <section className={styles['developer-footer'] + ' ' + styles['centered-content']}>
               <div className={styles['developer-logo']}>
                 <img src={activeProject.data.developer_logo_color} alt={activeProject.data.developer_name} />
               </div>
@@ -344,7 +344,7 @@ export default class Project extends Component {
                 <div dangerouslySetInnerHTML={{__html: activeProject.data.developer_description}} />
                 <div className={styles['developer-extra']}>
                   <a href={activeProject.data.developer_website}>{activeProject.data.developer_website}</a>
-                  <a href="#">See all the project from this developer</a>
+                  <a className={styles['pull-right']} href="#">See all the project from this developer</a>
                 </div>
               </div>
             </section>

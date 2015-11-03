@@ -431,6 +431,27 @@
   font-weight: 500;
 }
 
+.developer-footer {
+  display: none;
+  margin: $margin auto;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+}
+
+.developer-description {
+  border-left: 1px solid $light-gray-border-color;
+  padding-left: $margin;
+  margin-left: $margin;
+  font-size: $smaller-size;
+  text-align: justify;
+}
+
+.developer-extra {
+  margin-top: $margin;
+}
+
 $spinkit-spinner-margin: auto auto !default;
 $spinkit-size: 40px !default;
 $spinkit-spinner-color: #333 !default;
