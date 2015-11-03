@@ -224,7 +224,7 @@ export default class Project extends Component {
                   <input className={styles['tab-input']} type="radio" id="tab-3" name="tab-group" />
                   <label className={styles.tab} htmlFor="tab-3">2 BEDROOMS</label>
 
-                  <input className={styles['tab-input']} type="radio" id="tab-4" name="tab-group" checked />
+                  <input className={styles['tab-input']} type="radio" id="tab-4" name="tab-group" defaultChecked />
                   <label className={styles.tab} htmlFor="tab-4">3 BEDROOMS</label>
 
                   <input className={styles['tab-input']} type="radio" id="tab-5" name="tab-group" />
@@ -233,7 +233,7 @@ export default class Project extends Component {
 
                 <div className={styles['tabs-content']}>
                   <div className={styles['visual-content']}>
-                    <input type="checkbox" id="switch-2d-3d" className={styles['switch-checkbox']} checked />
+                    <input type="checkbox" id="switch-2d-3d" className={styles['switch-checkbox']} defaultChecked />
 
                     <img src={activeProject.data.layout2d} className={styles['house-layout'] + ' ' + styles['responsive-img'] + ' ' + styles.layout2d} alt="House Layout" />
                     <img src={activeProject.data.layout3d} className={styles['house-layout'] + ' ' + styles['responsive-img'] + ' ' + styles.layout3d} alt="House Layout" />
