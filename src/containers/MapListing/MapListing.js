@@ -4,7 +4,7 @@ import { isLoaded, load as loadProjects } from 'redux/modules/projects';
 import * as projectActions from 'redux/modules/projects';
 import * as filtersActions from 'redux/modules/filters';
 import * as mapActions from 'redux/modules/map';
-import { ListItem, Map, SearchField, LanguageSwitch } from 'components';
+import { ListItem, Map, SearchField } from 'components';
 
 
 @connect(
@@ -72,7 +72,6 @@ export default class Listing extends Component {
             zero properties found in the selected and filtered area
           </ul>
           }
-          <LanguageSwitch params={params}/>
         </div>
         { loading &&
           <div className={styles['sk-double-bounce-wrapper']}>

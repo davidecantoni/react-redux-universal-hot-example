@@ -119,54 +119,56 @@ export default class Project extends Component {
                 <h2>{activeProject.data.tagline}</h2>
 
                 <table className={styles.facts + ' ' + styles.table + ' ' + styles.split}>
-                  <tr>
-                    <th scope="row">Starting Price</th>
-                    <td className={styles.price}>
-                      <span className={styles.val}>{activeProject.data.price}</span>
-                      <span className={styles.currency}>{activeProject.data.currency}</span>
-                    </td>
-                  </tr>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Starting Price</th>
+                      <td className={styles.price}>
+                        <span className={styles.val}>{activeProject.data.price}</span>
+                        <span className={styles.currency}>{activeProject.data.currency}</span>
+                      </td>
+                    </tr>
 
-                  <tr>
-                    <th scope="row">Price per Sqft</th>
-                    <td className={styles['price-sqft']}>
-                      <span className={styles.val}>{activeProject.data.price_sqft}</span>
-                      <span className={styles['currency-sqft']}>{activeProject.data.currency}/Sqft</span>
-                    </td>
-                  </tr>
+                    <tr>
+                      <th scope="row">Price per Sqft</th>
+                      <td className={styles['price-sqft']}>
+                        <span className={styles.val}>{activeProject.data.price_sqft}</span>
+                        <span className={styles['currency-sqft']}>{activeProject.data.currency}/Sqft</span>
+                      </td>
+                    </tr>
 
-                  <tr>
-                    <th scope="row">Payable Now</th>
-                    <td className={styles['price-payable']}>
-                      <span className={styles.val}>{activeProject.data.price_payable}</span>
-                      <span className={styles.currency}>{activeProject.data.currency}</span>
-                    </td>
-                  </tr>
+                    <tr>
+                      <th scope="row">Payable Now</th>
+                      <td className={styles['price-payable']}>
+                        <span className={styles.val}>{activeProject.data.price_payable}</span>
+                        <span className={styles.currency}>{activeProject.data.currency}</span>
+                      </td>
+                    </tr>
 
-                  <tr>
-                    <th scope="row">Status</th>
-                    <td>{activeProject.data.status}</td>
-                  </tr>
+                    <tr>
+                      <th scope="row">Status</th>
+                      <td>{activeProject.data.status}</td>
+                    </tr>
 
-                  <tr>
-                    <th scope="row">Total Units</th>
-                    <td>{activeProject.data.total_units} apartments</td>
-                  </tr>
+                    <tr>
+                      <th scope="row">Total Units</th>
+                      <td>{activeProject.data.total_units} apartments</td>
+                    </tr>
 
-                  <tr>
-                    <th scope="row">Possession from</th>
-                    <td>{activeProject.data.possession}</td>
-                  </tr>
+                    <tr>
+                      <th scope="row">Possession from</th>
+                      <td>{activeProject.data.possession}</td>
+                    </tr>
 
-                  <tr>
-                    <th scope="row">Title</th>
-                    <td>{activeProject.data.title_type}</td>
-                  </tr>
+                    <tr>
+                      <th scope="row">Title</th>
+                      <td>{activeProject.data.title_type}</td>
+                    </tr>
 
-                  <tr>
-                    <th scope="row">Location</th>
-                    <td>{activeProject.data.location}</td>
-                  </tr>
+                    <tr>
+                      <th scope="row">Location</th>
+                      <td>{activeProject.data.location}</td>
+                    </tr>
+                  </tbody>
                 </table>
 
                 <article className={styles.about}>
@@ -329,7 +331,12 @@ export default class Project extends Component {
           </div>
         }
         {activeProject.loading &&
-          <div>data is been fetched</div>
+          <div className={styles['sk-double-bounce-wrapper']}>
+            <div className={styles['sk-double-bounce']}>
+              <div className={styles['sk-child'] + ' ' + styles['sk-double-bounce1']}></div>
+              <div className={styles['sk-child'] + ' ' + styles['sk-double-bounce2']}></div>
+            </div>
+          </div>
         }
       </div>
     );

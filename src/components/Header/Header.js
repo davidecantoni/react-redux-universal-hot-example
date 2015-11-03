@@ -1,7 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import { LanguageSwitch } from 'components';
 
 export default class Header extends Component {
+  static propTypes = {
+    params: PropTypes.object
+  }
+
   render() {
     const styles = require('./Header.scss');
     const logo = '//pfae-a.akamaihd.net/img/logos/property-finder-UAE-logo.svg';
@@ -42,10 +47,12 @@ export default class Header extends Component {
               <li className={styles.more}>
                 <a href="#">More</a>
               </li>
+              <li className={styles.more}>
+                <LanguageSwitch {...this.props}/>
+              </li>
             </ul>
           </nav>
         </div>
-
         <div className={styles.avatar + ' ' + styles['v-center']}>
           <a href="#">
             <div className={styles.user + ' ' + styles['replace-by-x']}>

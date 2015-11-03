@@ -11,12 +11,12 @@
 .results {
   position: absolute;
   right: 0;
-  top: 0;
+  top: 55px;
+  height: calc(100% - 55px);
   width: 400px;
   margin: 0;
   padding: 10px;
   background-color: rgba(255, 255, 255, .9);
-  height: 90%;
   overflow-y: scroll;
 }
 
@@ -32,22 +32,21 @@ ul {
   padding: 0;
 }
 
-$spinkit-spinner-margin: 40px auto !default;
+$spinkit-spinner-margin: auto auto !default;
 $spinkit-size: 40px !default;
 $spinkit-spinner-color: #333 !default;
 
 .sk-double-bounce-wrapper {
-  position: absolute;
-  height: 90%;
-  width: 400px;
-  right: 0;
-  top: 0;
 }
 
 .sk-double-bounce {
   width: $spinkit-size;
   height: $spinkit-size;
-  position: relative;
+  position: absolute;
+  right: 0;
+  top: 55px;
+  bottom: 0px;
+  left: 0px;
   margin: $spinkit-spinner-margin;
 
   .sk-child {

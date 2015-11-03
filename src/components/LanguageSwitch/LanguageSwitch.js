@@ -10,9 +10,9 @@ export default class ListItem extends Component {
     const { params } = this.props;
     return (
       <div>
-        <Link to={`/en/${params.newprojects}/`}>english</Link><br/>
-        <Link to={`/ar/${params.newprojects}/`}>arabic</Link><br/>
-        current language is {params.lang}<br/>
+        <Link to={`/en/${params.newprojects}/`}>en</Link>&nbsp;|&nbsp;
+        <Link to={`/ar/${params.newprojects}/`}>ar</Link><br/>
+        {/*current language is {params.lang}<br/>*/}
       </div>
     );
   }

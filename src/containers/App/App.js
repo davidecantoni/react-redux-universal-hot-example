@@ -16,6 +16,7 @@ export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     user: PropTypes.object,
+    params: PropTypes.object,
     logout: PropTypes.func.isRequired,
     pushState: PropTypes.func.isRequired
   };
@@ -56,12 +57,13 @@ export default class App extends Component {
   }*/
 
   render() {
+    const { params } = this.props;
     const styles = require('./App.scss');
     return (
       <div>
         <DocumentMeta {...config.app.meta} />
 
-        <Header />
+        <Header params={params}/>
 
         <main role="main" className={styles.content}>
           {this.props.children}
