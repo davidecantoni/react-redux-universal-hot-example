@@ -210,7 +210,7 @@
 }
 
 .action-buttons {
-  margin: $margin/4*5 0;
+  margin: $margin/4*5 auto;
 
   @media screen and (min-width: 768px) {
     display: none;
