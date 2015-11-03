@@ -240,9 +240,10 @@ export default class Project extends Component {
 
                     <div className={styles['switch-button-wrapper']}>
                       <span className={styles['button-aux-text']}>View the floorplan in</span>
-                      <label className={styles.button + ' ' + ['switch-button']} htmlFor="switch-2d-3d">
-                        <span className={styles['option-2d'] + ' ' + styles['switch-option']}>2D</span>
-                        <span className={styles['option-3d'] + ' ' + styles['switch-option']}>3D</span>
+                      <label className={styles.button + ' ' + styles['switch-button']} htmlFor="switch-2d-3d">
+                        <span className={styles['switch-option'] + ' ' + styles['option-2d']}>2D</span>
+                        <span className={styles['switch-option'] + ' ' + styles['option-3d']}>3D</span>
+                        <div className={styles.gauntlet} />
                       </label>
                     </div>
                   </div>

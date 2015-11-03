@@ -49,7 +49,8 @@
 }
 
 .key-features,
-.read-more {
+.read-more,
+.more-details {
   .svg-i {
     margin-right: 4px;
   }
@@ -263,8 +264,7 @@
     margin-left: 5px;
   }
 
-  &:after {
-    content: '';
+  .gauntlet {
     width: 32px;
     height: 25px;
     position: absolute;
@@ -303,7 +303,7 @@
     }
 
     ~ .switch-button-wrapper .switch-button {
-      &:after {
+      .gauntlet {
         right: 3px;
       }
 
