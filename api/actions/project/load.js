@@ -17,6 +17,8 @@ const initialProject = {
   location: 'Al Furjan, Dubai',
   url: 'project-name-test',
   image: '/main-img.jpg',
+  layout2d: '/house-layout2d.jpg',
+  layout3d: '/house-layout3d.jpg',
   secondary_image: '/secondary-img.jpg',
   key_features: [
     'Beautiful large swimming pool',

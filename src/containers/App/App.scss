@@ -96,6 +96,7 @@
 
   .action-buttons {
     margin: 0;
+    display: block;
   }
 }
 
@@ -119,10 +120,12 @@
 .table {
   font-size: $small-size;
 
-  tr {
-    @media screen and (min-width: 900px) {
-      display: inline-block;
-      width: 50%;
+  &.split {
+    tr {
+      @media screen and (min-width: 900px) {
+        display: inline-block;
+        width: 50%;
+      }
     }
   }
 
@@ -207,6 +210,24 @@
 
 .action-buttons {
   margin: $margin/4*5 0;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.switch-button-wrapper {
+  text-align: center;
+}
+
+.button-aux-text {
+  display: none;
+  font-size: $small-size;
+  margin-right: 4px;
+
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+  }
 }
 
 .switch-button {
@@ -216,10 +237,15 @@
   position: relative;
   cursor: pointer;
   outline: 0;
-  border: 0 !important;
-  display: block !important;
+  border: 0;
+  display: block;
   margin: $margin auto;
   width: 71px;
+
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+    margin: 0 auto $margin;
+  }
 
   .switch-option {
     position: relative;
@@ -253,6 +279,11 @@
 
 .house-layout {
   display: none;
+
+  @media screen and (min-width: 768px) {
+    object-fit: contain;
+    min-height: 100%;
+  }
 }
 
 .layout2d {
@@ -271,7 +302,7 @@
       display: inline;
     }
 
-    ~ .switch-button {
+    ~ .switch-button-wrapper .switch-button {
       &:after {
         right: 3px;
       }
@@ -285,4 +316,117 @@
       }
     }
   }
+}
+
+.visual-content {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+.tabs-wrapper {
+  display: block;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    margin-bottom: $margin*2;
+  }
+
+  input {
+    display: none;
+  }
+}
+
+.facts-wrapper {
+  @media screen and (min-width: 768px) {
+    width: 250px;
+    padding-top: 50px;
+  }
+}
+
+.visual-content {
+  @media screen and (min-width: 768px) {
+    margin: 0 $margin;
+    flex: 1;
+  }
+}
+
+.payment-info {
+  width: 100%;
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
+}
+
+.payment-table {
+  margin: $margin 0 $margin $margin;
+  width: calc(100% - 20px);
+
+  thead th {
+    font-weight: 800;
+    border: 0;
+  }
+
+  td {
+    padding: $margin/2 0;
+    font-weight: 400;
+    border: 0;
+  }
+
+  .center-col {
+    width: 10%;
+  }
+
+  tr:nth-child(even),
+  thead {
+    background-color: $button-bg-hover;
+  }
+}
+
+.tabs-content {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+
+.tabs {
+  display: none;
+  border-right: 1px solid $light-gray-border-color;
+  width: 220px;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
+}
+
+.tab {
+  display: block;
+  background-color: $button-bg-hover;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding-left: $margin;
+  font-weight: 400;
+  cursor: pointer;
+  font-size: $small-size;
+  color: $gray-color;
+  border-left: 1px solid $light-gray-border-color;
+  border-bottom: 1px solid $light-gray-border-color;
+
+  &:first-of-type {
+    border-top: 1px solid $light-gray-border-color;
+  }
+}
+
+.tab-input:checked + .tab {
+  color: $red-color;
+  background-color: $white-color;
+  width: calc(100% + 1px);
+  border-right: 0;
+  font-weight: 500;
 }

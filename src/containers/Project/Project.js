@@ -54,6 +54,7 @@ export default class Project extends Component {
     const usePhone = '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/sprite.svg#i-phone"></use>';
     const useCheck = '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/sprite.svg#i-check"></use>';
     const useArrow = '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/sprite.svg#i-chevron-down"></use>';
+    const usePlus = '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/sprite.svg#i-plus-square"></use>';
     return (
       <div>
         {!activeProject.loading && activeProject.loaded &&
@@ -117,7 +118,7 @@ export default class Project extends Component {
                 <h1>{activeProject.data.name}</h1>
                 <h2>{activeProject.data.tagline}</h2>
 
-                <table className={styles.facts + ' ' + styles.table}>
+                <table className={styles.facts + ' ' + styles.table + ' ' + styles.split}>
                   <tr>
                     <th scope="row">Starting Price</th>
                     <td className={styles.price}>
@@ -201,6 +202,124 @@ export default class Project extends Component {
             </section>
 
             <img src={activeProject.data.secondary_image} className={styles['secondary-img'] + ' ' + styles['responsive-img']} alt="Secondary Image" />
+
+            <section className={styles['secondary-content'] + ' ' + styles['centered-content']}>
+              <h3>Unit Configuration</h3>
+
+              <button className={styles.button + ' ' + styles['huge-button'] + ' ' + styles['select-button']}>
+                2 BEDROOMS
+                <svg dangerouslySetInnerHTML={{__html: useArrow}} className={styles['svg-i'] + ' ' + styles['svg-huge'] + ' ' + styles['svg-gray'] + ' ' + styles['pull-right']} />
+              </button>
+
+              <div className={styles['tabs-wrapper']}>
+                <div className={styles.tabs}>
+                  <input className={styles['tab-input']} type="radio" id="tab-1" name="tab-group" />
+                  <label className={styles.tab} htmlFor="tab-1">STUDIO</label>
+
+                  <input className={styles['tab-input']} type="radio" id="tab-2" name="tab-group" />
+                  <label className={styles.tab} htmlFor="tab-2">1 BEDROOM</label>
+
+                  <input className={styles['tab-input']} type="radio" id="tab-3" name="tab-group" />
+                  <label className={styles.tab} htmlFor="tab-3">2 BEDROOMS</label>
+
+                  <input className={styles['tab-input']} type="radio" id="tab-4" name="tab-group" checked />
+                  <label className={styles.tab} htmlFor="tab-4">3 BEDROOMS</label>
+
+                  <input className={styles['tab-input']} type="radio" id="tab-5" name="tab-group" />
+                  <label className={styles.tab} htmlFor="tab-5">VILLA</label>
+                </div>
+
+                <div className={styles['tabs-content']}>
+                  <div className={styles['visual-content']}>
+                    <input type="checkbox" id="switch-2d-3d" className={styles['switch-checkbox']} checked />
+
+                    <img src={activeProject.data.layout2d} className={styles['house-layout'] + ' ' + styles['responsive-img'] + ' ' + styles.layout2d} alt="House Layout" />
+                    <img src={activeProject.data.layout3d} className={styles['house-layout'] + ' ' + styles['responsive-img'] + ' ' + styles.layout3d} alt="House Layout" />
+
+                    <div className={styles['switch-button-wrapper']}>
+                      <span className={styles['button-aux-text']}>View the floorplan in</span>
+                      <label className={styles.button + ' ' + ['switch-button']} htmlFor="switch-2d-3d">
+                        <span className={styles['option-2d'] + ' ' + styles['switch-option']}>2D</span>
+                        <span className={styles['option-3d'] + ' ' + styles['switch-option']}>3D</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div className={styles['facts-wrapper']}>
+                    <table className={styles.table + ' ' + styles.facts}>
+                      <tbody>
+                        <tr>
+                          <th scope="row">Price from</th>
+                          <td className={styles.price}>
+                            <span className={styles.val}>891,000</span>
+                            <span className={styles.currency}>AED</span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">Price per Sqft</th>
+                          <td className={styles['price-sqft']}>
+                            <span className={styles.val}>985</span>
+                            <span className={styles['currency-sqft']}>AED/Sqft</span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">Size</th>
+                          <td>964 AED</td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">Unit Type</th>
+                          <td>Apartment</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <a className={styles['more-details']} href="#">
+                      <svg dangerouslySetInnerHTML={{__html: usePlus}} className={styles['svg-i'] + ' ' + styles['svg-medium'] + ' ' + styles['svg-blue']} />
+                      More details
+                    </a>
+                  </div>
+
+                  <div className={styles['payment-info']}>
+                    <table className={styles.table + ' ' + styles['payment-table']}>
+                      <thead>
+                        <tr>
+                          <th scope="row" className={styles['center-col']}>% PAYABLE</th>
+                          <th scope="row">PAYABLE WHEN</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td scope="row" className={styles['center-col']}>10%</td>
+                          <td scope="row">ON BOOKING + 4% OQOOD + AED 1520 UNIT REGISTRATION</td>
+                        </tr>
+                        <tr>
+                          <td scope="row" className={styles['center-col']}>10%</td>
+                          <td scope="row">WITHIN 60 DAYS FROM 1ST INSTALLMENT</td>
+                        </tr>
+                        <tr>
+                          <td scope="row" className={styles['center-col']}>10%</td>
+                          <td scope="row">WITHIN 90 DAYS FROM 2ND INSTALLMENT</td>
+                        </tr>
+                        <tr>
+                          <td scope="row" className={styles['center-col']}>10%</td>
+                          <td scope="row">WITHIN 60 DAYS FROM 3RD INSTALLMENT</td>
+                        </tr>
+                        <tr>
+                          <td scope="row" className={styles['center-col']}>10%</td>
+                          <td scope="row">WITHIN 90 DAYS FROM 4TH INSTALLMENT</td>
+                        </tr>
+                        <tr>
+                          <td scope="row" className={styles['center-col']}>50%</td>
+                          <td scope="row">ON KEY TIME</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
 
             <div>
               <Link to={`/${params.lang}/${params.newprojects}/`}>Back to map</Link><br/>
