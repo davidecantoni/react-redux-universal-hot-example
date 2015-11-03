@@ -324,6 +324,10 @@ export default class Project extends Component {
               </div>
             </section>
 
+            <div className={styles.map + ' ' + styles['centered-content-mobile']}>
+              <iframe width="100%" height="337" style={{ border: 0 }} src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJRcbZaklDXz4RYlEphFBu5r0&key=AIzaSyBxhKnCY10tZU5VNeLG3SyOF1E5yvAcJY0"></iframe>
+            </div>
+
             <div>
               <Link to={`/${params.lang}/${params.newprojects}/`}>Back to map</Link><br/>
               <a href="/somewhereelse">Some other place outside of new project</a><br/>
