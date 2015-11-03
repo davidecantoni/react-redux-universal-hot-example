@@ -210,7 +210,12 @@ export default class Project extends Component {
           </div>
         }
         {activeProject.loading &&
-          <div>data is been fetched</div>
+          <div className={styles['sk-double-bounce-wrapper']}>
+            <div className={styles['sk-double-bounce']}>
+              <div className={styles['sk-child'] + ' ' + styles['sk-double-bounce1']}></div>
+              <div className={styles['sk-child'] + ' ' + styles['sk-double-bounce2']}></div>
+            </div>
+          </div>
         }
       </div>
     );
