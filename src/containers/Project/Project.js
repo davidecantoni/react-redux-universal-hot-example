@@ -118,6 +118,7 @@ export default class Project extends Component {
                 <h2>{activeProject.data.tagline}</h2>
 
                 <table className={styles.facts + ' ' + styles.table}>
+                  <tbody>
                   <tr>
                     <th scope="row">Starting Price</th>
                     <td className={styles.price}>
@@ -166,6 +167,7 @@ export default class Project extends Component {
                     <th scope="row">Location</th>
                     <td>{activeProject.data.location}</td>
                   </tr>
+                  </tbody>
                 </table>
 
                 <article className={styles.about}>

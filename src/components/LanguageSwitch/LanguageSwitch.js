@@ -8,9 +8,8 @@ export default class ListItem extends Component {
 
   render() {
     const { params } = this.props;
-    const styles = require('../../containers/App/App.scss');
     return (
-      <div className={styles.language}>
+      <div>
         <Link to={`/en/${params.newprojects}/`}>en</Link>&nbsp;|&nbsp;
         <Link to={`/ar/${params.newprojects}/`}>ar</Link><br/>
         {/*current language is {params.lang}<br/>*/}
