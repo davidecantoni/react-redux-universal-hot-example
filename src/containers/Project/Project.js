@@ -254,27 +254,27 @@ export default class Project extends Component {
                         <tr>
                           <th scope="row">Price from</th>
                           <td className={styles.price}>
-                            <span className={styles.val}>891,000</span>
-                            <span className={styles.currency}>AED</span>
+                            <span className={styles.val}>{activeProject.data.price}</span>
+                            <span className={styles.currency}>{activeProject.data.currency}</span>
                           </td>
                         </tr>
 
                         <tr>
                           <th scope="row">Price per Sqft</th>
                           <td className={styles['price-sqft']}>
-                            <span className={styles.val}>985</span>
-                            <span className={styles['currency-sqft']}>AED/Sqft</span>
+                            <span className={styles.val}>{activeProject.data.price_sqft}</span>
+                            <span className={styles['currency-sqft']}>{activeProject.data.currency}/Sqft</span>
                           </td>
                         </tr>
 
                         <tr>
                           <th scope="row">Size</th>
-                          <td>964 AED</td>
+                          <td>{activeProject.data.size}</td>
                         </tr>
 
                         <tr>
                           <th scope="row">Unit Type</th>
-                          <td>Apartment</td>
+                          <td>{activeProject.data.unit_type}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -324,17 +324,30 @@ export default class Project extends Component {
               </div>
             </section>
 
-            <div className={styles.map + ' ' + styles['centered-content-mobile']}>
+            <section className={styles.map + ' ' + styles['centered-content-mobile']}>
               <iframe width="100%" height="337" style={{ border: 0 }} src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJRcbZaklDXz4RYlEphFBu5r0&key=AIzaSyBxhKnCY10tZU5VNeLG3SyOF1E5yvAcJY0"></iframe>
-            </div>
+            </section>
 
-            <div className={styles['action-buttons'] + ' ' + styles['centered-content']}>
+            <section className={styles['action-buttons'] + ' ' + styles['centered-content']}>
               <button className={styles['action-button'] + ' ' + styles.button}>Get Brochure</button>
               <button className={styles['action-button'] + ' ' + styles['pull-right'] + ' ' + styles.button}>
                 <svg dangerouslySetInnerHTML={{__html: usePhone}} className={styles['svg-i'] + ' ' + styles['svg-largest'] + ' ' + styles['svg-white']} />
                 Call Now
               </button>
-            </div>
+            </section>
+
+            <section className={styles['developer-footer']}>
+              <div className={styles['developer-logo']}>
+                <img src={activeProject.data.developer_logo_color} alt={activeProject.data.developer_name} />
+              </div>
+              <div className={styles['developer-description']}>
+                <div dangerouslySetInnerHTML={{__html: activeProject.data.developer_description}} />
+                <div className={styles['developer-extra']}>
+                  <a href={activeProject.data.developer_website}>{activeProject.data.developer_website}</a>
+                  <a href="#">See all the project from this developer</a>
+                </div>
+              </div>
+            </section>
 
             <div>
               <Link to={`/${params.lang}/${params.newprojects}/`}>Back to map</Link><br/>
